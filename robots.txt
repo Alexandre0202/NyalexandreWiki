@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nyale.wikit.com.br/sitemap.xml
+Sitemap: https://alexandre0202.github.io/NyalexandreWiki/sitemap.xml

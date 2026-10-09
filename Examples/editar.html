@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <base href="../">
     <meta charset="UTF-8">
     <title>Editar YCHs — Painel Secreto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -194,19 +195,19 @@
         <h2 class="section-title" style="margin-bottom:20px;"><i class="fas fa-plus-circle"></i> Adicionar Novo YCH</h2>
         <div style="background:#11112a;border:1px solid #2a2a4e;border-radius:14px;padding:26px;">
             <div class="form-grid cols-3">
-                <div class="form-group"><label>Nome do YCH</label><input class="form-control" id="n-name" placeholder="Easter Egg Painter YCH!"/></div>
-                <div class="form-group"><label>Preço</label><input class="form-control" id="n-price" placeholder="$35 USD"/></div>
+                <div class="form-group"><label>Nome do YCH</label><input class="form-control" id="n-name" placeholder="Easter Egg Painter YCH!"></div>
+                <div class="form-group"><label>Preço</label><input class="form-control" id="n-price" placeholder="$35 USD"></div>
                 <div class="form-group">
                     <label>Nº Carrossel <span class="help-tip" data-tip="Use 20+ para novos YCHs. Os existentes usam 2-19.">?</span></label>
-                    <input class="form-control" id="n-carousel" type="number" placeholder="20"/>
+                    <input class="form-control" id="n-carousel" type="number" placeholder="20">
                 </div>
             </div>
             <div class="form-grid">
                 <div class="form-group"><label>Descrição</label><textarea class="form-control" id="n-desc" placeholder="Descrição curta do YCH..."></textarea></div>
                 <div style="display:flex;flex-direction:column;gap:10px;">
-                    <div class="form-group"><label>Included</label><input class="form-control" id="n-included" placeholder="GIF + PNG + MP4"/></div>
-                    <div class="form-group"><label>Tipo</label><input class="form-control" id="n-type" placeholder="Animation"/></div>
-                    <div class="form-group"><label>Slots</label><input class="form-control" id="n-slots" placeholder="10/10"/></div>
+                    <div class="form-group"><label>Included</label><input class="form-control" id="n-included" placeholder="GIF + PNG + MP4"></div>
+                    <div class="form-group"><label>Tipo</label><input class="form-control" id="n-type" placeholder="Animation"></div>
+                    <div class="form-group"><label>Slots</label><input class="form-control" id="n-slots" placeholder="10/10"></div>
                 </div>
             </div>
             <div class="form-group" style="margin-bottom:14px;">
@@ -224,7 +225,7 @@
                     <div class="ratio-option" onclick="selRatioNew('ych-2x2',this)"><div class="ratio-visual ratio-2x2"></div><div class="ratio-label">2:2</div><div class="ratio-desc">Quadrado</div></div>
                     <div class="ratio-option" onclick="selRatioNew('ych-2x3',this)"><div class="ratio-visual ratio-2x3"></div><div class="ratio-label">2:3</div><div class="ratio-desc">Retrato</div></div>
                 </div>
-                <input type="hidden" id="n-ratio" value="ych-16x9"/>
+                <input type="hidden" id="n-ratio" value="ych-16x9">
             </div>
             <div class="form-group" style="margin-bottom:14px;">
                 <label>Tipo de Carrossel</label>
@@ -241,13 +242,13 @@
                     <div class="status-option" onclick="selStatusNew('limited',this)" id="ns-limited"><div class="s-icon">🟡</div><div class="s-name" style="color:#fbbf24">Limitado</div><div class="s-desc">Alerta slots</div></div>
                     <div class="status-option" onclick="selStatusNew('waitlist',this)" id="ns-waitlist"><div class="s-icon">🟣</div><div class="s-name" style="color:#a78bfa">Waitlist</div><div class="s-desc">Lista espera</div></div>
                 </div>
-                <input type="hidden" id="n-status" value="open"/>
+                <input type="hidden" id="n-status" value="open">
             </div>
             <div class="form-group" style="margin-bottom:14px;">
                 <label>Imagens <span class="help-tip" data-tip="Index 0 = AD.gif (arte de divulgação). Os demais são exemplos preenchidos.">?</span></label>
                 <div class="images-list" id="n-imgs">
-                    <div class="image-row"><span class="img-index">0</span><span class="img-role is-ad">AD.gif</span><input class="form-control" placeholder="/Imagens/YCH/NomeYCH/AD.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div>
-                    <div class="image-row"><span class="img-index">1</span><span class="img-role">Exemplo 1</span><input class="form-control" placeholder="/Imagens/YCH/NomeYCH/1.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div>
+                    <div class="image-row"><span class="img-index">0</span><span class="img-role is-ad">AD.gif</span><input class="form-control" placeholder="Imagens/YCH/NomeYCH/AD.gif"><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div>
+                    <div class="image-row"><span class="img-index">1</span><span class="img-role">Exemplo 1</span><input class="form-control" placeholder="Imagens/YCH/NomeYCH/1.gif"><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div>
                 </div>
                 <button class="btn btn-ghost btn-sm" onclick="addImgRowNew()" style="margin-top:7px;"><i class="fas fa-plus"></i> Adicionar imagem</button>
             </div>
@@ -312,17 +313,17 @@
 // =====================================================
 const ychData = {
     active: [
-        { id:'easter-egg', name:'Easter Egg Painter YCH!', price:'$35 USD', carousel:18, carouselType:'ych-carousel', ratio:'ych-16x9', status:'open', slots:'10/10', included:'GIF + PNG + MP4', type:'Animation', description:'Your character is painting a cute Easter egg with a brush! An adorable chibi animation loop perfect for the Easter season. Ponies and furries - all species welcome!', features:[{icon:'fa-paintbrush',title:'Easter Animation',desc:'Your OC painting a cute Easter egg with a brush in an adorable chibi animation loop.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including ponies and furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complex designs, clothing, accessories & details.'}], images:['/Imagens/YCH/EasterEgg/AD.gif','/Imagens/YCH/EasterEgg/1.gif','/Imagens/YCH/EasterEgg/2.gif'] },
-        { id:'silly-goof', name:'Silly Goof YCH!', price:'$30 USD', carousel:19, carouselType:'ych-carousel', ratio:'ych-16x9', status:'open', slots:'10/10', included:'GIF + PNG', type:'Animation', description:'Your character making the iconic silly goof expression! An adorable looping animation.', features:[{icon:'fa-face-grin-tongue',title:'Silly Animation',desc:'Your OC goofing around in a cute looping animation.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complex designs, clothing, accessories.'}], images:['/Imagens/YCH/SillyGoof/AD.gif','/Imagens/YCH/SillyGoof/1.gif','/Imagens/YCH/SillyGoof/2.gif'] }
+        { id:'easter-egg', name:'Easter Egg Painter YCH!', price:'$35 USD', carousel:18, carouselType:'ych-carousel', ratio:'ych-16x9', status:'open', slots:'10/10', included:'GIF + PNG + MP4', type:'Animation', description:'Your character is painting a cute Easter egg with a brush! An adorable chibi animation loop perfect for the Easter season. Ponies and furries - all species welcome!', features:[{icon:'fa-paintbrush',title:'Easter Animation',desc:'Your OC painting a cute Easter egg with a brush in an adorable chibi animation loop.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including ponies and furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complex designs, clothing, accessories & details.'}], images:['Imagens/YCH/EasterEgg/AD.gif','Imagens/YCH/EasterEgg/1.gif','Imagens/YCH/EasterEgg/2.gif'] },
+        { id:'silly-goof', name:'Silly Goof YCH!', price:'$30 USD', carousel:19, carouselType:'ych-carousel', ratio:'ych-16x9', status:'open', slots:'10/10', included:'GIF + PNG', type:'Animation', description:'Your character making the iconic silly goof expression! An adorable looping animation.', features:[{icon:'fa-face-grin-tongue',title:'Silly Animation',desc:'Your OC goofing around in a cute looping animation.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complex designs, clothing, accessories.'}], images:['Imagens/YCH/SillyGoof/AD.gif','Imagens/YCH/SillyGoof/1.gif','Imagens/YCH/SillyGoof/2.gif'] }
     ],
     past: [
         { id:'what-ych', name:'What YCH!', price:'$40 USD', carousel:2, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'10/10', included:'GIF + 2PNG + Telegram Sticker', type:'Animation', description:'Your OC appears in a smooth looping animation, expressing confusion with a floating question mark above their head.', features:[{icon:'fa-note-sticky',title:'Sticker',desc:'Your OC loops a confused reaction with a floating question mark.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['Imagens/YCH/WhatYCH/AD.gif','Imagens/YCH/WhatYCH/1.gif','Imagens/YCH/WhatYCH/2.gif','Imagens/YCH/WhatYCH/3.gif','Imagens/YCH/WhatYCH/4.gif'] },
-        { id:'christmas-2025', name:'2025 Christmas YCH!!', price:'$30 USD', carousel:15, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'5/5', included:'GIF + 2PNG + Video', type:'Animation / Drawing', description:"Ready for Christmas 2025? I'm bringing you the Christmas YCH! You wrapped in twinkling lights!!", features:[{icon:'fa-tree',title:'Animation:',desc:'Your character is blinking, being cute and showing its little paws wrapped in a string of twinkling lights!'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories, and background!'}], images:['/Imagens/YCH/2025 Christmas/AD.gif','/Imagens/YCH/2025 Christmas/1.gif','/Imagens/YCH/2025 Christmas/2.gif','/Imagens/YCH/2025 Christmas/3.gif','/Imagens/YCH/2025 Christmas/4.gif'] },
-        { id:'blehh', name:'Blehh YCH!', price:'$40 USD', carousel:4, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'13/20', included:'MP4 + GIF + PNG', type:'Animation', description:'Your character doing the iconic Bleh Viral internet meme, but animated by me!', features:[{icon:'fa-earth-americas',title:'Meme',desc:'Your character making a meme, 4 animated scenes.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/Blehh/AD.gif','/Imagens/YCH/Blehh/1.gif','/Imagens/YCH/Blehh/2.gif'] },
-        { id:'perspective', name:'Perspective YCH!', price:'$45 USD', carousel:5, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'4/4', included:'MP4 + GIF + PNG', type:'Animation', description:'Your character, animated in the Perspective meme that became a trend on the internet!, but animated by me!', features:[{icon:'fa-earth-americas',title:'Meme',desc:'Your character dancing to the rhythm of the meme from 2 perspectives.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/Perspective/AD.gif','/Imagens/YCH/Perspective/1.gif','/Imagens/YCH/Perspective/2.gif','/Imagens/YCH/Perspective/3.gif','/Imagens/YCH/Perspective/4.gif'] },
-        { id:'valentines-2025', name:'2025 Valentines YCH!', price:'$45 USD', carousel:6, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'5/5', included:'MP4 + GIF + PNG', type:'Animation', description:"A Valentine's YCH full of love! Your character sending hearts in a lovely animated scene.", features:[{icon:'fa-heart',title:'Valentine Animation',desc:"Your character in a lovely animated Valentine's scene."},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/2025 Valentines/AD.gif','/Imagens/YCH/2025 Valentines/1.gif','/Imagens/YCH/2025 Valentines/2.gif','/Imagens/YCH/2025 Valentines/3.gif','/Imagens/YCH/2025 Valentines/4.gif'] },
-        { id:'shooter', name:'2024 Olympic Shooter YCH!', price:'$40 USD', carousel:9, carouselType:'ych-carousel2', ratio:'ych-16x9', status:'closed', slots:'2/5', included:'MP4 + GIF + PNG', type:'Animation', description:'Something that went viral at the 2024 Olympics was shooter Yusuf Dikec, for shooting and finishing in 2nd place without using any equipment, so I reproduced the same scene but is your character shooting!', features:[{icon:'fa-gun',title:'Meme',desc:'His character, along with his country name, is shown shooting without any equipment.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/ShooterYCH/AD.gif','/Imagens/YCH/ShooterYCH/1.gif','/Imagens/YCH/ShooterYCH/2.gif'] },
-        { id:'bleep', name:'Bleep YCH!', price:'$12 USD', carousel:13, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'2/5', included:'PNG', type:'Drawing', description:"And here's my first YCH! Your character holding a heart with a personalized message!", features:[{icon:'fa-face-grin-tongue',title:'Thematic',desc:'Your character holding a heart with a personalized message.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/Bleep/AD.gif','/Imagens/YCH/Bleep/1.gif','/Imagens/YCH/Bleep/2.gif'] }
+        { id:'christmas-2025', name:'2025 Christmas YCH!!', price:'$30 USD', carousel:15, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'5/5', included:'GIF + 2PNG + Video', type:'Animation / Drawing', description:"Ready for Christmas 2025? I'm bringing you the Christmas YCH! You wrapped in twinkling lights!!", features:[{icon:'fa-tree',title:'Animation:',desc:'Your character is blinking, being cute and showing its little paws wrapped in a string of twinkling lights!'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories, and background!'}], images:['Imagens/YCH/2025 Christmas/AD.gif','Imagens/YCH/2025 Christmas/1.gif','Imagens/YCH/2025 Christmas/2.gif','Imagens/YCH/2025 Christmas/3.gif','Imagens/YCH/2025 Christmas/4.gif'] },
+        { id:'blehh', name:'Blehh YCH!', price:'$40 USD', carousel:4, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'13/20', included:'MP4 + GIF + PNG', type:'Animation', description:'Your character doing the iconic Bleh Viral internet meme, but animated by me!', features:[{icon:'fa-earth-americas',title:'Meme',desc:'Your character making a meme, 4 animated scenes.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['Imagens/YCH/Blehh/AD.gif','Imagens/YCH/Blehh/1.gif','Imagens/YCH/Blehh/2.gif'] },
+        { id:'perspective', name:'Perspective YCH!', price:'$45 USD', carousel:5, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'4/4', included:'MP4 + GIF + PNG', type:'Animation', description:'Your character, animated in the Perspective meme that became a trend on the internet!, but animated by me!', features:[{icon:'fa-earth-americas',title:'Meme',desc:'Your character dancing to the rhythm of the meme from 2 perspectives.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['Imagens/YCH/Perspective/AD.gif','Imagens/YCH/Perspective/1.gif','Imagens/YCH/Perspective/2.gif','Imagens/YCH/Perspective/3.gif','Imagens/YCH/Perspective/4.gif'] },
+        { id:'valentines-2025', name:'2025 Valentines YCH!', price:'$45 USD', carousel:6, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'5/5', included:'MP4 + GIF + PNG', type:'Animation', description:"A Valentine's YCH full of love! Your character sending hearts in a lovely animated scene.", features:[{icon:'fa-heart',title:'Valentine Animation',desc:"Your character in a lovely animated Valentine's scene."},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['Imagens/YCH/2025 Valentines/AD.gif','Imagens/YCH/2025 Valentines/1.gif','Imagens/YCH/2025 Valentines/2.gif','Imagens/YCH/2025 Valentines/3.gif','Imagens/YCH/2025 Valentines/4.gif'] },
+        { id:'shooter', name:'2024 Olympic Shooter YCH!', price:'$40 USD', carousel:9, carouselType:'ych-carousel2', ratio:'ych-16x9', status:'closed', slots:'2/5', included:'MP4 + GIF + PNG', type:'Animation', description:'Something that went viral at the 2024 Olympics was shooter Yusuf Dikec, for shooting and finishing in 2nd place without using any equipment, so I reproduced the same scene but is your character shooting!', features:[{icon:'fa-gun',title:'Meme',desc:'His character, along with his country name, is shown shooting without any equipment.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['Imagens/YCH/ShooterYCH/AD.gif','Imagens/YCH/ShooterYCH/1.gif','Imagens/YCH/ShooterYCH/2.gif'] },
+        { id:'bleep', name:'Bleep YCH!', price:'$12 USD', carousel:13, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'2/5', included:'PNG', type:'Drawing', description:"And here's my first YCH! Your character holding a heart with a personalized message!", features:[{icon:'fa-face-grin-tongue',title:'Thematic',desc:'Your character holding a heart with a personalized message.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['Imagens/YCH/Bleep/AD.gif','Imagens/YCH/Bleep/1.gif','Imagens/YCH/Bleep/2.gif'] }
     ]
 };
 
@@ -340,7 +341,7 @@ function buildCard(ych,section,index){
     const ratioButtons=rOpts.map((r,i)=>`<div class="ratio-option ${ych.ratio===r?'selected':''}" onclick="setField('${section}',${index},'ratio','${r}',this,'ratio')"><div class="ratio-visual ${rV[i]}"></div><div class="ratio-label">${rL[i]}</div><div class="ratio-desc">${rD[i]}</div></div>`).join('');
     const sOpts=['open','closed','limited','waitlist'],sE=['🟢','🔴','🟡','🟣'],sN=['Aberto','Fechado','Limitado','Waitlist'],sC=['#4ade80','#f87171','#fbbf24','#a78bfa'],sD=['Order aparece','Desabilitado','Alerta slots','Lista espera'];
     const statusButtons=sOpts.map((s,i)=>`<div class="status-option ${ych.status===s?'sel-'+s:''}" onclick="setField('${section}',${index},'status','${s}',this,'status')"><div class="s-icon">${sE[i]}</div><div class="s-name" style="color:${sC[i]}">${sN[i]}</div><div class="s-desc">${sD[i]}</div></div>`).join('');
-    const imgRows=ych.images.map((src,i)=>`<div class="image-row"><span class="img-index">${i}</span><span class="img-role ${i===0?'is-ad':''}">${i===0?'AD.gif':'Ex '+i}</span><input class="form-control" value="${src}" onchange="updateImg('${section}',${index},${i},this.value)"/><button class="btn-icon" onclick="removeImg('${section}',${index},${i})"><i class="fas fa-trash"></i></button></div>`).join('');
+    const imgRows=ych.images.map((src,i)=>`<div class="image-row"><span class="img-index">${i}</span><span class="img-role ${i===0?'is-ad':''}">${i===0?'AD.gif':'Ex '+i}</span><input class="form-control" value="${src}" onchange="updateImg('${section}',${index},${i},this.value)"><button class="btn-icon" onclick="removeImg('${section}',${index},${i})"><i class="fas fa-trash"></i></button></div>`).join('');
     const card=document.createElement('div');
     card.className='ych-editor-card';
     card.innerHTML=`
@@ -354,16 +355,16 @@ function buildCard(ych,section,index){
             <div class="card-section">
                 <h4><i class="fas fa-info-circle"></i> Informações Básicas</h4>
                 <div class="form-grid cols-3">
-                    <div class="form-group"><label>Nome</label><input class="form-control" value="${ych.name}" onchange="setField('${section}',${index},'name',this.value,null,'text')"/></div>
-                    <div class="form-group"><label>Preço</label><input class="form-control" value="${ych.price}" onchange="setField('${section}',${index},'price',this.value,null,'text')"/></div>
-                    <div class="form-group"><label>Nº Carrossel</label><input class="form-control" type="number" value="${ych.carousel}" onchange="setField('${section}',${index},'carousel',parseInt(this.value),null,'text')"/></div>
+                    <div class="form-group"><label>Nome</label><input class="form-control" value="${ych.name}" onchange="setField('${section}',${index},'name',this.value,null,'text')"></div>
+                    <div class="form-group"><label>Preço</label><input class="form-control" value="${ych.price}" onchange="setField('${section}',${index},'price',this.value,null,'text')"></div>
+                    <div class="form-group"><label>Nº Carrossel</label><input class="form-control" type="number" value="${ych.carousel}" onchange="setField('${section}',${index},'carousel',parseInt(this.value),null,'text')"></div>
                 </div>
                 <div class="form-grid">
                     <div class="form-group"><label>Descrição</label><textarea class="form-control" onchange="setField('${section}',${index},'description',this.value,null,'text')">${ych.description}</textarea></div>
                     <div style="display:flex;flex-direction:column;gap:10px;">
-                        <div class="form-group"><label>Included</label><input class="form-control" value="${ych.included}" onchange="setField('${section}',${index},'included',this.value,null,'text')"/></div>
-                        <div class="form-group"><label>Tipo</label><input class="form-control" value="${ych.type}" onchange="setField('${section}',${index},'type',this.value,null,'text')"/></div>
-                        <div class="form-group"><label>Slots (ex: 5/10)</label><input class="form-control" value="${ych.slots}" onchange="setField('${section}',${index},'slots',this.value,null,'text')"/></div>
+                        <div class="form-group"><label>Included</label><input class="form-control" value="${ych.included}" onchange="setField('${section}',${index},'included',this.value,null,'text')"></div>
+                        <div class="form-group"><label>Tipo</label><input class="form-control" value="${ych.type}" onchange="setField('${section}',${index},'type',this.value,null,'text')"></div>
+                        <div class="form-group"><label>Slots (ex: 5/10)</label><input class="form-control" value="${ych.slots}" onchange="setField('${section}',${index},'slots',this.value,null,'text')"></div>
                     </div>
                 </div>
             </div>
@@ -426,7 +427,7 @@ function removeImg(s,i,ii){ ychData[s][i].images.splice(ii,1); reRenderImgs(s,i)
 function addImg(s,i){ ychData[s][i].images.push(''); reRenderImgs(s,i); }
 function reRenderImgs(s,i){
     const c=document.getElementById(`imgs-${s}-${i}`);
-    c.innerHTML=ychData[s][i].images.map((src,ii)=>`<div class="image-row"><span class="img-index">${ii}</span><span class="img-role ${ii===0?'is-ad':''}">${ii===0?'AD.gif':'Ex '+ii}</span><input class="form-control" value="${src}" onchange="updateImg('${s}',${i},${ii},this.value)"/><button class="btn-icon" onclick="removeImg('${s}',${i},${ii})"><i class="fas fa-trash"></i></button></div>`).join('');
+    c.innerHTML=ychData[s][i].images.map((src,ii)=>`<div class="image-row"><span class="img-index">${ii}</span><span class="img-role ${ii===0?'is-ad':''}">${ii===0?'AD.gif':'Ex '+ii}</span><input class="form-control" value="${src}" onchange="updateImg('${s}',${i},${ii},this.value)"><button class="btn-icon" onclick="removeImg('${s}',${i},${ii})"><i class="fas fa-trash"></i></button></div>`).join('');
 }
 function moveYCH(section,index){ const dest=section==='active'?'past':'active'; const item=ychData[section].splice(index,1)[0]; ychData[dest].push(item); renderCards(); showToast(`"${item.name}" movido para ${dest==='active'?'Active':'Past'}`,'success'); }
 function deleteYCH(section,index){ const name=ychData[section][index].name; if(confirm(`Remover "${name}"?`)){ ychData[section].splice(index,1); renderCards(); showToast(`"${name}" removido`,'success'); } }
@@ -436,9 +437,9 @@ function deleteYCH(section,index){ const name=ychData[section][index].name; if(c
 // =====================================================
 function selRatioNew(r,el){ document.getElementById('n-ratio').value=r; el.closest('.ratio-selector').querySelectorAll('.ratio-option').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); }
 function selStatusNew(s,el){ document.getElementById('n-status').value=s; ['open','closed','limited','waitlist'].forEach(x=>{ document.getElementById('ns-'+x).className='status-option'; }); el.classList.add('sel-'+s); }
-function addImgRowNew(){ const l=document.getElementById('n-imgs'); const c=l.children.length; const r=document.createElement('div'); r.className='image-row'; r.innerHTML=`<span class="img-index">${c}</span><span class="img-role">Ex ${c}</span><input class="form-control" placeholder="/Imagens/YCH/Nome/${c}.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button>`; l.appendChild(r); }
+function addImgRowNew(){ const l=document.getElementById('n-imgs'); const c=l.children.length; const r=document.createElement('div'); r.className='image-row'; r.innerHTML=`<span class="img-index">${c}</span><span class="img-role">Ex ${c}</span><input class="form-control" placeholder="Imagens/YCH/Nome/${c}.gif"><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button>`; l.appendChild(r); }
 function removeImgRow(btn){ btn.closest('.image-row').remove(); }
-function clearNewForm(){ ['n-name','n-price','n-carousel','n-desc','n-included','n-type','n-slots'].forEach(id=>{ document.getElementById(id).value=''; }); document.getElementById('n-imgs').innerHTML=`<div class="image-row"><span class="img-index">0</span><span class="img-role is-ad">AD.gif</span><input class="form-control" placeholder="/Imagens/YCH/NomeYCH/AD.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div><div class="image-row"><span class="img-index">1</span><span class="img-role">Exemplo 1</span><input class="form-control" placeholder="/Imagens/YCH/NomeYCH/1.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div>`; }
+function clearNewForm(){ ['n-name','n-price','n-carousel','n-desc','n-included','n-type','n-slots'].forEach(id=>{ document.getElementById(id).value=''; }); document.getElementById('n-imgs').innerHTML=`<div class="image-row"><span class="img-index">0</span><span class="img-role is-ad">AD.gif</span><input class="form-control" placeholder="Imagens/YCH/NomeYCH/AD.gif"><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div><div class="image-row"><span class="img-index">1</span><span class="img-role">Exemplo 1</span><input class="form-control" placeholder="Imagens/YCH/NomeYCH/1.gif"><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div>`; }
 function addNewYCH(){
     const name=document.getElementById('n-name').value.trim();
     const price=document.getElementById('n-price').value.trim();
@@ -548,30 +549,30 @@ function saveYCH(){
         <meta name="description" content="YCH (Your Character Here) commissions by Nyale — limited slots, active and past examples, pricing and instructions to reserve your slot.">
         <meta name="keywords" content="YCH, commissions, Nyale, your character here, slots">
         <meta name="robots" content="index, follow">
-        <link rel="canonical" href="https://nyale.wikit.com.br/ych.html">
+        <link rel="canonical" href="https://alexandre0202.github.io/NyalexandreWiki/YCH.html">
 
         <meta property="og:title" content="Nyale Commissions - YCH">
         <meta property="og:description" content="See available YCHs and examples by Nyale. Reserve your slot for limited YCHs.">
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://nyale.wikit.com.br/ych.html">
-        <meta property="og:image" content="https://nyale.wikit.com.br/Icons/preview.png">
+        <meta property="og:url" content="https://alexandre0202.github.io/NyalexandreWiki/YCH.html">
+        <meta property="og:image" content="https://alexandre0202.github.io/NyalexandreWiki/Icons/preview.png">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="https://nyale.wikit.com.br/Icons/preview.png">
+        <meta name="twitter:image" content="https://alexandre0202.github.io/NyalexandreWiki/Icons/preview.png">
 
         <script type="application/ld+json">
         {
             "@context":"https://schema.org",
             "@type":"WebPage",
             "name":"YCH - Nyale Commissions",
-            "url":"https://nyale.wikit.com.br/ych.html",
+            "url":"https://alexandre0202.github.io/NyalexandreWiki/YCH.html",
             "inLanguage":"en-US"
         }
         <\/script>
-    <link rel="icon" href="/Icons/Navicon.jpg" type="WebsiteIcon">
-    <link rel="stylesheet" href="/CSS/base.css">
-    <link rel="stylesheet" href="/CSS/ych.css">
+    <link rel="icon" href="Icons/Navicon.jpg" type="WebsiteIcon">
+    <link rel="stylesheet" href="CSS/base.css">
+    <link rel="stylesheet" href="CSS/ych.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -580,7 +581,7 @@ function saveYCH(){
     <div id="page-wrapper">
         <header class="ms-header">
             <a href="index.html" class="logo-link">
-                    <img src="/Icons/LOGO.png" alt="Nyale Commissions logo" class="logo">
+                    <img src="Icons/LOGO.png" alt="Nyale Commissions logo" class="logo">
                     </a>
         </header>
 
@@ -662,7 +663,7 @@ ${sections}
         <footer class="ms-footer minimalist-footer">
             <div class="footer-wrapper">
                 <div class="footer-top">
-                    <div class="footer-logo-mini"><img src="/Icons/LOGO.png" alt="Nyale"></div>
+                    <div class="footer-logo-mini"><img src="Icons/LOGO.png" alt="Nyale"></div>
                     <div class="social-row">
                         <a href="https://x.com/ComNyale" title="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="https://www.furaffinity.net/user/nyale0102/" title="FurAffinity"><i class="fas fa-paw"></i></a>
@@ -688,11 +689,11 @@ ${sections}
         </footer>
     </div>
 
-    <script src="/Scripts/ych.js"><\/script>
-    <script src="/Scripts/ych-script.js"><\/script>
-    <script src="/Scripts/modal-script.js" defer><\/script>
-    <script src="/Scripts/portfolio-script.js" defer><\/script>
-    <script src="/Scripts/pricing-script.js" defer><\/script>
+    <script src="Scripts/ych.js"><\/script>
+    <script src="Scripts/ych-script.js"><\/script>
+    <script src="Scripts/modal-script.js" defer><\/script>
+    <script src="Scripts/portfolio-script.js" defer><\/script>
+    <script src="Scripts/pricing-script.js" defer><\/script>
 </body>
 </html>`;
 
