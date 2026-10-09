@@ -1,0 +1,34 @@
+# Nyale Commissions
+
+> Official portfolio and commission information for Nyale, a digital artist and animator also known as Nyalefox, Nyalexandre, and "Desenhando com Nyale".
+
+Canonical website: https://alexandre0202.github.io/NyalexandreWiki/
+The website is primarily written in English. The artist is based in Brazil and uses the Portuguese identity phrase "Desenhando com Nyale".
+
+## Main pages
+
+- [Home and artist overview](https://alexandre0202.github.io/NyalexandreWiki/): Artist introduction, featured artwork, social links, and commission overview.
+- [Portfolio](https://alexandre0202.github.io/NyalexandreWiki/portifolio.html): Artwork gallery, commissions, and personal pieces.
+- [Art styles](https://alexandre0202.github.io/NyalexandreWiki/arttypes.html): Available illustration and animation styles.
+- [Pricing](https://alexandre0202.github.io/NyalexandreWiki/pricing.html): Commission types, prices, extras, and options.
+- [YCH commissions](https://alexandre0202.github.io/NyalexandreWiki/YCH.html): Your Character Here examples, slots, and instructions.
+- [How to order](https://alexandre0202.github.io/NyalexandreWiki/order.html): Commission process and order form.
+
+## Artist and topics
+
+- Artist names: Nyale, Nyalefox, Nyalexandre, Desenhando com Nyale.
+- Work: digital illustration, pony art, furry art, YCH commissions, pixel art, animation, character art, and Telegram stickers.
+
+## Official profiles
+
+- [X](https://x.com/ComNyale)
+- [Bluesky](https://bsky.app/profile/nyalexandre.bsky.social)
+- [Telegram](https://t.me/nyalexandre)
+- [Fur Affinity](https://www.furaffinity.net/user/nyalexandre/)
+- [Derpibooru](https://derpibooru.org/profiles/NhalePOny)
+- [DeviantArt](https://www.deviantart.com/nyale0102)
+
+## Discovery
+
+- [Sitemap](https://alexandre0202.github.io/NyalexandreWiki/sitemap.xml)
+- [Robots policy](https://alexandre0202.github.io/NyalexandreWiki/robots.txt)

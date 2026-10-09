@@ -36,7 +36,6 @@ body[data-theme="dark"] .extra-note-box,
 body[data-theme="dark"] .alert-box,
 body[data-theme="dark"] .contact-method,
 body[data-theme="dark"] .contact-note,
-body[data-theme="dark"] .commission-form-container .form-group,
 body[data-theme="dark"] .form-notice,
 body[data-theme="dark"] .current-time-display,
 body[data-theme="dark"] .payment-note,
@@ -55,13 +54,7 @@ body[data-theme="dark"] .ych-examples-box,
 body[data-theme="dark"] .portfolio-card,
 body[data-theme="dark"] .portfolio-card figcaption,
 body[data-theme="dark"] .stat,
-body[data-theme="dark"] .category-count,
-body[data-theme="dark"] .process-step,
-body[data-theme="dark"] .style-block__text,
-body[data-theme="dark"] .style-block__carousel,
-body[data-theme="dark"] .style-block__carousel2,
-body[data-theme="dark"] .style-block__carousel3,
-body[data-theme="dark"] .style-block__carousel4 {
+body[data-theme="dark"] .category-count {
     background: linear-gradient(135deg, #111827 0%, #1f2937 100%) !important;
     color: #f8fafc !important;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35) !important;
@@ -70,11 +63,7 @@ body[data-theme="dark"] .style-block__carousel4 {
 
 body[data-theme="dark"] .portfolio-hero,
 body[data-theme="dark"] .index-hero,
-body[data-theme="dark"] main .content .portfolio-hero.order-hero,
-body[data-theme="dark"] .style-block__carousel,
-body[data-theme="dark"] .style-block__carousel2,
-body[data-theme="dark"] .style-block__carousel3,
-body[data-theme="dark"] .style-block__carousel4 {
+body[data-theme="dark"] main .content .portfolio-hero.order-hero {
     background: linear-gradient(135deg, rgba(14, 116, 144, 0.35) 0%, rgba(2, 8, 23, 0.95) 100%) !important;
     color: #f8fafc !important;
 }

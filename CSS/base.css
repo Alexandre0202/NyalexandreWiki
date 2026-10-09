@@ -838,6 +838,15 @@ body[data-theme="dark"] .ms-nav .theme-toggle-btn {
     border: 1px solid rgba(255,255,255,0.1);
 }
 
+.portfolio-modal .modal-zoom-level {
+    min-width: 3.5em;
+    color: #f4faff;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    text-align: center;
+}
+
 .portfolio-modal .modal-zoom-btn {
     background: rgba(255,255,255,0.15);
     color: #fff;
@@ -865,7 +874,7 @@ body[data-theme="dark"] .ms-nav .theme-toggle-btn {
 .portfolio-modal input[type="range"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 250px;
+    width: clamp(90px, 24vw, 250px);
     height: 6px;
     border-radius: 6px;
     background: linear-gradient(90deg, #0051ff, #00c6ff);
@@ -920,7 +929,7 @@ body[data-theme="dark"] .ms-nav .theme-toggle-btn {
     }
     
     .portfolio-modal input[type="range"] {
-        width: 150px;
+        width: clamp(90px, 30vw, 150px);
     }
     
     .portfolio-modal .image-wrapper {

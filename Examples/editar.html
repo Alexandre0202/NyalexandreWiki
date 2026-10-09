@@ -645,14 +645,15 @@ ${sections}
 
         <div class="portfolio-modal" id="ych-modal">
             <div class="modal-body">
-                <button class="modal-close">&times;</button>
+                <button class="modal-close" aria-label="Fechar visualizador">&times;</button>
                 <div class="image-wrapper"><img src="" alt="" class="modal-image"></div>
                 <div class="modal-controls">
                     <div class="modal-controls-bg">
-                        <button class="modal-zoom-btn zoom-in"><i class="fas fa-search-plus"></i></button>
-                        <input type="range" min="100" max="300" value="100" class="zoom-slider">
-                        <button class="modal-zoom-btn zoom-out"><i class="fas fa-search-minus"></i></button>
-                        <button class="modal-zoom-btn reset-zoom"><i class="fas fa-sync-alt"></i></button>
+                        <button class="modal-zoom-btn zoom-in" aria-label="Aumentar zoom"><i class="fas fa-search-plus"></i></button>
+                        <input id="ychZoomSlider" type="range" min="100" max="300" value="100" class="zoom-slider" aria-label="Controle de zoom">
+                        <output class="modal-zoom-level" for="ychZoomSlider" aria-live="polite">100%</output>
+                        <button class="modal-zoom-btn zoom-out" aria-label="Diminuir zoom"><i class="fas fa-search-minus"></i></button>
+                        <button class="modal-zoom-btn reset-zoom" aria-label="Restabelecer zoom" title="Restabelecer zoom"><i class="fas fa-sync-alt"></i></button>
                     </div>
                 </div>
             </div>

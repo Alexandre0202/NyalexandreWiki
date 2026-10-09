@@ -96,6 +96,7 @@ function initModal() {
     const zoomOutBtn = modal.querySelector('.zoom-out');
     const resetZoomBtn = modal.querySelector('.reset-zoom');
     const zoomSlider = modal.querySelector('.zoom-slider');
+    const zoomLevel = modal.querySelector('.modal-zoom-level');
     
     let currentScale = 100;
     let isDragging = false;
@@ -117,6 +118,7 @@ function initModal() {
             modalImage.style.transform = 'scale(1)';
             currentScale = 100;
             zoomSlider.value = 100;
+            zoomLevel.value = '100%';
             modal.classList.add('visible');
             document.body.style.overflow = 'hidden';
         });
@@ -156,6 +158,7 @@ function initModal() {
         const scale = this.value / 100;
         modalImage.style.transform = `scale(${scale})`;
         currentScale = this.value;
+        zoomLevel.value = `${Math.round(currentScale)}%`;
         
         if (scale > 1) {
             modalImage.classList.add('zoomed');
@@ -177,6 +180,7 @@ function initModal() {
     function zoomImage(factor) {
         currentScale = Math.max(25, Math.min(300, currentScale * factor));
         zoomSlider.value = currentScale;
+        zoomLevel.value = `${Math.round(currentScale)}%`;
         modalImage.style.transform = `scale(${currentScale / 100})`;
         
         if (currentScale > 100) {
@@ -189,6 +193,7 @@ function initModal() {
     function resetZoom() {
         currentScale = 100;
         zoomSlider.value = 100;
+        zoomLevel.value = '100%';
         modalImage.style.transform = 'scale(1)';
         modalImage.classList.remove('zoomed');
         modalImage.parentElement.scrollLeft = 0;
@@ -271,4 +276,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-

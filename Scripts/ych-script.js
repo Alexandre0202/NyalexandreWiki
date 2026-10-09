@@ -41,28 +41,31 @@ document.addEventListener('DOMContentLoaded', function() {
    // ====== EXPANSÃO DE IMAGENS ======
    // Abre imagem no modal ao clicar
    const ychImages = document.querySelectorAll('.ych-static-image img');
-   const modal = document.getElementById('portfolioModal');
-   const modalImage = document.getElementById('modalImage');
-   const modalClose = document.getElementById('modalClose');
-   
-   ychImages.forEach(img => {
-      img.addEventListener('click', function() {
-         modalImage.src = this.src;
-         modalImage.alt = this.alt;
-         modal.classList.add('visible');
+   const modal = document.getElementById('ych-modal');
+   const modalImage = modal?.querySelector('.modal-image');
+   const modalClose = modal?.querySelector('.modal-close');
+
+   if (modal && modalImage && modalClose) {
+      ychImages.forEach(img => {
+         img.addEventListener('click', function() {
+            modalImage.src = this.dataset.full || this.src;
+            modalImage.alt = this.alt;
+            modal.querySelector('.reset-zoom')?.click();
+            modal.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+         });
       });
-   });
-   
-   // Fecha modal
-   modalClose.addEventListener('click', function() {
-      modal.classList.remove('visible');
-   });
-   
-   modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
+
+      const closeModal = () => {
          modal.classList.remove('visible');
-      }
-   });
+         document.body.style.overflow = '';
+      };
+
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', function(e) {
+         if (e.target === modal) closeModal();
+      });
+   }
    
    // ====== CONTROLE DE VÍDEO ======
    // Pausa vídeos quando não estão visíveis
