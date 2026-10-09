@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://alexandre0202.github.io/NyalexandreWiki/sitemap.xml
