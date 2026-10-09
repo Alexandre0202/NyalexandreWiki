@@ -1,0 +1,188 @@
+body[data-theme="dark"] {
+    color: #f8fafc;
+    background-image: linear-gradient(to bottom, #020617, #111827);
+}
+
+body[data-theme="dark"] #page-wrapper {
+    background: transparent;
+}
+
+body[data-theme="dark"] .content,
+body[data-theme="dark"] .content h1,
+body[data-theme="dark"] .content h2,
+body[data-theme="dark"] .content h3,
+body[data-theme="dark"] .content h4,
+body[data-theme="dark"] .content p,
+body[data-theme="dark"] .content li,
+body[data-theme="dark"] .content span,
+body[data-theme="dark"] .content label,
+body[data-theme="dark"] .content a:not(.theme-toggle-btn):not(.cta-btn):not(.btn-twitter):not(.filter-btn):not(.alert-btn):not(.modal-close):not(.modal-zoom-btn),
+body[data-theme="dark"] .content i {
+    color: #f8fafc !important;
+}
+
+body[data-theme="dark"] .portfolio-hero,
+body[data-theme="dark"] .index-hero,
+body[data-theme="dark"] .intro-section,
+body[data-theme="dark"] .portfolio-section--big-white,
+body[data-theme="dark"] .portfolio-filter-bar,
+body[data-theme="dark"] .info-card,
+body[data-theme="dark"] .order-info-card,
+body[data-theme="dark"] .pricing-card,
+body[data-theme="dark"] .pricing-table-container,
+body[data-theme="dark"] .faq-item,
+body[data-theme="dark"] .dont-draw-item,
+body[data-theme="dark"] .extra-note-box,
+body[data-theme="dark"] .alert-box,
+body[data-theme="dark"] .contact-method,
+body[data-theme="dark"] .contact-note,
+body[data-theme="dark"] .form-notice,
+body[data-theme="dark"] .current-time-display,
+body[data-theme="dark"] .payment-note,
+body[data-theme="dark"] .table-note,
+body[data-theme="dark"] .style-block,
+body[data-theme="dark"] .style-description,
+body[data-theme="dark"] .style-description2,
+body[data-theme="dark"] .style-description3,
+body[data-theme="dark"] .style-description4,
+body[data-theme="dark"] .feature-item,
+body[data-theme="dark"] .feature-item2,
+body[data-theme="dark"] .feature-item3,
+body[data-theme="dark"] .feature-item4,
+body[data-theme="dark"] .ych-item,
+body[data-theme="dark"] .ych-examples-box,
+body[data-theme="dark"] .portfolio-card,
+body[data-theme="dark"] .portfolio-card figcaption,
+body[data-theme="dark"] .stat,
+body[data-theme="dark"] .category-count {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%) !important;
+    color: #f8fafc !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body[data-theme="dark"] .portfolio-hero,
+body[data-theme="dark"] .index-hero,
+body[data-theme="dark"] main .content .portfolio-hero.order-hero {
+    background: linear-gradient(135deg, rgba(14, 116, 144, 0.35) 0%, rgba(2, 8, 23, 0.95) 100%) !important;
+    color: #f8fafc !important;
+}
+
+body[data-theme="dark"] .portfolio-card figcaption {
+    background: linear-gradient(180deg, rgba(2, 8, 23, 0.2) 0%, rgba(2, 8, 23, 0.9) 100%) !important;
+}
+
+body[data-theme="dark"] .hero-sub,
+body[data-theme="dark"] .stat-label,
+body[data-theme="dark"] .intro-text,
+body[data-theme="dark"] .featured-gallery .portfolio-card figcaption p,
+body[data-theme="dark"] .portfolio-card figcaption p,
+body[data-theme="dark"] .portfolio-card figcaption .portfolio-meta,
+body[data-theme="dark"] .info-card p,
+body[data-theme="dark"] .info-card li,
+body[data-theme="dark"] .order-info-card p,
+body[data-theme="dark"] .step-content p,
+body[data-theme="dark"] .form-hint,
+body[data-theme="dark"] .form-notice p,
+body[data-theme="dark"] .pricing-card .card-body ul li,
+body[data-theme="dark"] .pricing-table td,
+body[data-theme="dark"] .table-note p,
+body[data-theme="dark"] .alert-content p,
+body[data-theme="dark"] .contact-method p,
+body[data-theme="dark"] .contact-method h3,
+body[data-theme="dark"] .style-block__text p,
+body[data-theme="dark"] .feature-item p,
+body[data-theme="dark"] .feature-item2 p,
+body[data-theme="dark"] .feature-item3 p,
+body[data-theme="dark"] .feature-item4 p,
+body[data-theme="dark"] .style-examples h4,
+body[data-theme="dark"] .example-tag,
+body[data-theme="dark"] .pricing-card .card-subtitle,
+body[data-theme="dark"] .pricing-card .card-body li,
+body[data-theme="dark"] .info-card ol,
+body[data-theme="dark"] .info-card ul,
+body[data-theme="dark"] .order-alert p {
+    color: #d1d5db !important;
+}
+
+body[data-theme="dark"] .intro-content h2,
+body[data-theme="dark"] .portfolio-category h2,
+body[data-theme="dark"] .portfolio-section--big-white h2,
+body[data-theme="dark"] .order-info-card h3,
+body[data-theme="dark"] .info-card h3,
+body[data-theme="dark"] .contact-method h3,
+body[data-theme="dark"] .pricing-card h3,
+body[data-theme="dark"] .card-header h3,
+body[data-theme="dark"] .alert-content h3,
+body[data-theme="dark"] .form-group label,
+body[data-theme="dark"] .step-content h4,
+body[data-theme="dark"] .commission-form-container i,
+body[data-theme="dark"] .commission-form-container label,
+body[data-theme="dark"] .commission-form-container .section-header h2,
+body[data-theme="dark"] .commission-form-container .section-header i,
+body[data-theme="dark"] .style-header h2,
+body[data-theme="dark"] .style-examples h4,
+body[data-theme="dark"] .pricing-card .card-header h3,
+body[data-theme="dark"] .portfolio-card h3,
+body[data-theme="dark"] .portfolio-card .card-expand-btn,
+body[data-theme="dark"] .category-count {
+    color: #f8fafc !important;
+}
+
+body[data-theme="dark"] .filter-btn,
+body[data-theme="dark"] .filter-btn:hover,
+body[data-theme="dark"] .tag,
+body[data-theme="dark"] .payment-icon,
+body[data-theme="dark"] .current-time-display,
+body[data-theme="dark"] .payment-note,
+body[data-theme="dark"] .table-note,
+body[data-theme="dark"] .form-select,
+body[data-theme="dark"] .form-input,
+body[data-theme="dark"] .form-textarea,
+body[data-theme="dark"] .cta-btn,
+body[data-theme="dark"] .alert-btn,
+body[data-theme="dark"] .btn-twitter,
+body[data-theme="dark"] .carousel-btn,
+body[data-theme="dark"] .card-expand-btn {
+    background: rgba(255, 255, 255, 0.10) !important;
+    color: #f9fafb !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+body[data-theme="dark"] .filter-btn.active,
+body[data-theme="dark"] .cta-section,
+body[data-theme="dark"] .pricing-table th,
+body[data-theme="dark"] .cta-btn.primary {
+    background: linear-gradient(135deg, #0051ff 0%, #57d0ff 100%) !important;
+    color: #ffffff !important;
+}
+
+body[data-theme="dark"] .pricing-table tr:hover,
+body[data-theme="dark"] .tag:hover,
+body[data-theme="dark"] .filter-btn:hover,
+body[data-theme="dark"] .cta-btn:hover,
+body[data-theme="dark"] .carousel-btn:hover,
+body[data-theme="dark"] .portfolio-card:hover .card-expand-btn {
+    background: rgba(87, 208, 255, 0.16) !important;
+}
+
+body[data-theme="dark"] .form-select:focus,
+body[data-theme="dark"] .form-input:focus,
+body[data-theme="dark"] .form-textarea:focus {
+    box-shadow: 0 0 0 3px rgba(87, 208, 255, 0.2) !important;
+    border-color: #57d0ff !important;
+}
+
+body[data-theme="dark"] .portfolio-card figcaption a,
+body[data-theme="dark"] .portfolio-card figcaption button,
+body[data-theme="dark"] .btn-twitter,
+body[data-theme="dark"] .cta-btn.secondary,
+body[data-theme="dark"] .alert-btn,
+body[data-theme="dark"] .filter-btn,
+body[data-theme="dark"] .filter-btn.active,
+body[data-theme="dark"] .cta-btn.primary,
+body[data-theme="dark"] .cta-btn.secondary,
+body[data-theme="dark"] .carousel-btn,
+body[data-theme="dark"] .carousel-indicators button {
+    color: #ffffff !important;
+}

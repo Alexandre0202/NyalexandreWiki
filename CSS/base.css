@@ -1,0 +1,1336 @@
+/* ====== ESTILOS GERAIS E FONTES ====== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: linear-gradient(to bottom, #cecece, #c9c9c9);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body[data-theme="dark"] {
+    background-image: linear-gradient(to bottom, #0f172a, #111827);
+    color: #f8fafc;
+}
+
+#page-wrapper {
+    margin: 0 auto; 
+    background: #eeeeee;
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+body[data-theme="dark"] #page-wrapper {
+    background: #111827;
+}
+
+/* ====== HEADER & LOGO ===== */
+.ms-header {
+    background: #c5c5c5; 
+    padding: 30px 0px; 
+    border-bottom: none; 
+    background-image: url('../Icons/Baner.png');
+    background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+.logo {
+    height: 180px; 
+}
+
+/* ====== NAVBAR (Menu de Links - Desktop) ====== */
+.ms-nav {
+    background: linear-gradient(to right, #000000, #0026ce, #002c46);
+    border-bottom: none;
+    box-shadow: 0 2px 5px rgba(0, 91, 119, 0.466);
+}
+
+.ms-nav ul {
+    margin: 0;
+    padding: 15px 30px; 
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 16px 35px; 
+    list-style-type: none;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ms-nav ul li {
+    position: relative;
+}
+
+.ms-nav .theme-toggle-btn {
+    position: static;
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 1;
+}
+
+.ms-nav .theme-toggle-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.22);
+}
+
+body[data-theme="dark"] .ms-nav .theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.16);
+    color: #f8fafc;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ms-bottom-bar .theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    min-height: 46px;
+    padding: 6px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.ms-bottom-bar .theme-toggle-btn .theme-toggle-label {
+    display: none;
+}
+
+.ms-nav a {
+    text-decoration: none;
+    color: #ffffff; 
+    font-weight: 690;
+    font-size: 16px; 
+    white-space: nowrap; 
+    transition: color 0.2s ease-in-out, transform 0.3s ease-out;
+    display: block; 
+}
+
+.ms-nav a:hover {
+    color: #57d0ff; 
+    text-decoration: none; 
+    transform: translateY(-2px); 
+}
+
+/* ====== ANIMAÇÕES PARA NAVBAR, BANNER E LOGO ====== */
+
+/* 1. FADE-IN PARA O BANNER AO CARREGAR A PÁGINA */
+.ms-header {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* 2. BALANCEIO LEVE PARA A LOGO */
+.logo {
+    animation: gentle-swing 8s infinite ease-in-out;
+    transform-origin: center center;
+}
+
+/* 3. ANIMAÇÃO DE ENTRADA PARA ITENS DA NAVBAR */
+.ms-nav ul li {
+    animation: slide-in 0.5s ease forwards;
+    opacity: 0;
+}
+
+/* Delays progressivos para itens da navbar */
+.ms-nav ul li:nth-child(1) { animation-delay: 0.1s; }
+.ms-nav ul li:nth-child(2) { animation-delay: 0.2s; }
+.ms-nav ul li:nth-child(3) { animation-delay: 0.3s; }
+.ms-nav ul li:nth-child(4) { animation-delay: 0.4s; }
+.ms-nav ul li:nth-child(5) { animation-delay: 0.5s; }
+.ms-nav ul li:nth-child(6) { animation-delay: 0.6s; }
+
+/* 4. SETA DO ORDER NOW COM ESCALA SUTIL */
+.ms-nav a[href="order.html"] .fa-arrow-right {
+    display: inline-block;
+    animation: gentle-scale 2s infinite ease-in-out;
+}
+
+/* 5. ÍCONES ATIVOS NA NAVBAR MOBILE */
+.ms-bottom-bar a.active i {
+    animation: subtle-pulse 3s infinite ease-in-out;
+}
+
+/* ====== KEYFRAMES ====== */
+
+/* Fade-in simples */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Balanceio leve (mais suave que o slow-swing) */
+@keyframes gentle-swing {
+    0%, 100% { 
+        transform: rotate(0deg); 
+    }
+    25% { 
+        transform: rotate(0.5deg); 
+    }
+    75% { 
+        transform: rotate(-0.5deg); 
+    }
+}
+
+/* Entrada suave de cima */
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Escala muito sutil */
+@keyframes gentle-scale {
+    0%, 100% { 
+        transform: scale(1); 
+    }
+    50% { 
+        transform: scale(1.03); 
+    }
+}
+
+/* Pulsação sutil */
+@keyframes subtle-pulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.9; 
+        transform: scale(0.98);
+    }
+}
+
+/* ====== ESTILO ATIVO E ANIMAÇÕES (Desktop) ====== */
+.ms-nav a.active {
+    color: #57d0ff; 
+    font-weight: 1000; 
+    animation: slow-swing 4s infinite alternate ease-in-out;
+    transform-origin: center bottom;
+}
+
+.ms-nav a.active::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -5px; 
+    left: 0;
+    width: 100%;
+    height: 3px; 
+    background: #57d0ff; 
+    transition: width 0.3s ease-in-out;
+}
+
+.ms-nav a.active:hover {
+    color: #57d0ff; 
+}
+
+/* ====== CONTEÚDO (Área principal) ====== */
+.content {
+    padding: 50px; 
+}
+
+/* ====== BARRA INFERIOR FIXA (MOBILE) ====== */
+.ms-bottom-bar {
+    display: none; 
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #3b007e, #001572, #002c46); 
+    box-shadow: 0 -2px 5px rgba(17, 0, 255, 0.315);
+    z-index: 1000; 
+    padding: 10px 0 5px;
+}
+
+.ms-bottom-bar ul {
+    display: flex;
+    justify-content: space-around; 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ms-bottom-bar li {
+    flex: 1;
+    text-align: center;
+}
+
+.ms-bottom-bar a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-out; 
+    transform-origin: center;
+    min-height: 60px;
+    justify-content: center;
+}
+
+.ms-bottom-bar a:hover {
+    color: #57d0ff; 
+    transform: translateY(-2px);
+}
+
+.ms-bottom-bar a.active {
+    color: #57d0ff; 
+    background: rgba(55, 0, 255, 0.486); 
+    border-radius: 15px;
+    padding: 5px 8px;
+    animation: pulse-bottom-bar 2s infinite alternate ease-in-out;
+}
+
+.ms-bottom-bar a i {
+    font-size: 20px;
+    margin-bottom: 3px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.ms-bottom-bar a:hover i {
+    transform: scale(1.1);
+}
+
+.ms-bottom-bar .mobile-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+    opacity: 0.9;
+    margin-top: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.ms-bottom-bar a:hover .mobile-label {
+    opacity: 1;
+    color: #57d0ff;
+}
+
+.ms-bottom-bar a.active .mobile-label {
+    opacity: 1;
+    font-weight: 600;
+    color: #57d0ff;
+}
+
+/* RODAPÉ: Estilos base aqui */
+.ms-footer {
+    background-color: #ffffff;
+    box-shadow: #0000000a 0px -2px 5px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+/* ====== KEYFRAMES (Navbars e Animações Base) ====== */
+@keyframes slow-swing {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(2deg); }
+    100% { transform: rotate(-2deg); }
+}
+
+@keyframes pulse-bottom-bar {
+    0% { transform: scale(1.0); }
+    100% { transform: scale(1.1); }
+}
+
+/* ====== RESPONSIVIDADE (MEDIA QUERIES) ====== */
+@media (max-width: 768px) {
+    .ms-nav {
+        display: none;
+    }
+    .ms-bottom-bar {
+        display: block;
+    }
+    
+    .content {
+        padding-bottom: 70px;
+    }
+    
+    .ms-footer {
+        margin-bottom: 75px;
+    }
+    
+    .ms-nav a.active {
+        animation: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .content {
+        padding: 30px 15px 70px 15px;
+    }
+}
+
+@media (min-width: 1920px) {
+    #page-wrapper {
+        margin: 0 auto;
+    }
+}
+
+/* ====== ANIMAÇÕES GLOBAIS ====== */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== HERO SECTION GENÉRICA ====== */
+.portfolio-hero {
+    background: linear-gradient(135deg, 
+        rgba(0, 81, 255, 0.1) 0%, 
+        rgba(87, 208, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.979) 100%);
+    padding: 60px 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        #0051ff, #57d0ff, #0051ff);
+    background-size: 200% 100%;
+    animation: gradientMove 3s infinite linear;
+}
+
+.hero-icon {
+    font-size: 3.5rem;
+    color: #0051ff;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.portfolio-hero h1 {
+    margin: 0;
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, #0051ff 0%, #57d0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.8px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.hero-sub {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ====== SEÇÃO BRANCA GENÉRICA ====== */
+.portfolio-section--big-white {
+    background: #ffffff;
+    padding: 26px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    margin-bottom: 26px;
+}
+
+/* ====== PORTFOLIO CARDS GENÉRICOS ====== */
+.portfolio-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 90%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 81, 255, 0.15);
+    border-color: rgba(0, 81, 255, 0.2);
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+}
+
+.card-image-container {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+    cursor: pointer;
+}
+
+.portfolio-card:hover img {
+    transform: scale(1.18);
+}
+
+.portfolio-card figcaption {
+    padding: 20px 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #222;
+}
+
+.portfolio-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+    color: #222;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.portfolio-card:hover h3 {
+    color: #0051ff;
+}
+
+/* ====== BOTÃO DE EXPANDIR PEQUENO ====== */
+.card-expand-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 81, 255, 0.2);
+    border-radius: 50%;
+    color: #0051ff;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.card-expand-btn:hover {
+    background: #0051ff;
+    color: white;
+    transform: scale(1.1) translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 81, 255, 0.3);
+    border-color: #0051ff;
+}
+
+.portfolio-card:hover .card-expand-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ====== BACK TO TOP BUTTON ====== */
+.back-to-top {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #0051ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 81, 255, 0.3);
+    border: 2px solid white;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #0041cc;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 81, 255, 0.4);
+}
+
+@media (max-width: 900px) {
+    .ms-nav .theme-toggle-btn {
+        display: none;
+    }
+
+    .ms-bottom-bar .theme-toggle-btn {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 72px;
+        right: 16px;
+    }
+}
+
+/* ====== FOOTER MINIMALISTA ====== */
+.ms-footer.minimalist-footer {
+    background: linear-gradient(to right, #4b1ba5, #0026ce, #007c9b);
+    color: white;
+    padding: 30px 0 25px;
+    margin-top: 0px;
+    border-top: 1px solid rgba(87, 208, 255, 0.2);
+}
+
+.footer-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo-mini img {
+    width: 120px;
+    height: auto
+}
+
+.social-row {
+    display: flex;
+    gap: 15px;
+}
+
+.social-row a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.social-row a:hover {
+    color: #57d0ff;
+    transform: translateY(-2px);
+}
+
+.nav-mini {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.nav-mini a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-mini a:hover {
+    color: #57d0ff;
+}
+
+.nav-mini span {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.8rem;
+}
+
+.copyright {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* ====== MODAL STYLES ====== */
+.portfolio-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    background: rgba(0,0,0,0.85);
+    z-index: 5000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.portfolio-modal.visible {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.portfolio-modal .modal-body {
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+    max-width: 1400px;
+    max-height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    border: 1px solid rgba(87, 208, 255, 0.2);
+    overflow: hidden;
+}
+
+.portfolio-modal .image-wrapper {
+    width: 100%;
+    height: 100%;
+    max-height: calc(100% - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+}
+
+.portfolio-modal .modal-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    transform-origin: center center;
+    transition: transform 0.25s ease-in-out;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+}
+
+.portfolio-modal .modal-image.zoomed {
+    cursor: grab;
+}
+
+.portfolio-modal .modal-image.zoomed:active {
+    cursor: grabbing;
+}
+
+.portfolio-modal .modal-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.portfolio-modal .modal-close:hover {
+    background: rgba(255,0,0,0.8);
+    transform: scale(1.1);
+}
+
+.portfolio-modal .modal-controls {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 30;
+    padding: 15px 0;
+    flex-shrink: 0;
+}
+
+.portfolio-modal .modal-controls-bg {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    padding: 12px 20px;
+    border-radius: 14px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.portfolio-modal .modal-zoom-level {
+    min-width: 3.5em;
+    color: #f4faff;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    text-align: center;
+}
+
+.portfolio-modal .modal-zoom-btn {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.portfolio-modal .modal-zoom-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.15);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.portfolio-modal input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: clamp(90px, 24vw, 250px);
+    height: 6px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #0051ff, #00c6ff);
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Responsividade do Modal */
+@media (max-width: 768px) {
+    .portfolio-modal .modal-body {
+        width: 95vw;
+        height: 95vh;
+        padding: 15px;
+    }
+    
+    .portfolio-modal .modal-controls-bg {
+        padding: 10px 15px;
+        gap: 12px;
+    }
+    
+    .portfolio-modal input[type="range"] {
+        width: 180px;
+    }
+    
+    .portfolio-modal .modal-zoom-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    
+    .portfolio-modal .modal-close {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        right: 10px;
+        top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-modal .modal-body {
+        width: 98vw;
+        height: 98vh;
+        padding: 10px;
+    }
+    
+    .portfolio-modal .modal-controls-bg {
+        flex-wrap: wrap;
+        padding: 8px 12px;
+        gap: 10px;
+    }
+    
+    .portfolio-modal input[type="range"] {
+        width: clamp(90px, 30vw, 150px);
+    }
+    
+    .portfolio-modal .image-wrapper {
+        padding: 5px;
+    }
+}
+
+/* ====== CATEGORIES GENÉRICAS ====== */
+.portfolio-category {
+    margin-bottom: 50px;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f2ff;
+}
+
+.portfolio-category h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 2rem;
+    margin: 0;
+    color: #0051ff;
+}
+
+.portfolio-category h2 i {
+    font-size: 1.8rem;
+}
+
+.category-count {
+    background: #f0f2ff;
+    color: #0051ff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ====== ANIMAÇÕES DOS CARDS ====== */
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== SCROLL SMOOTH ====== */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ====== SEÇÃO HEADER COM SUBTÍTULO ====== */
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: #0051ff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.section-header .section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ====== ANIMAÇÃO FADE IN ====== */
+.animate-fadein {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== CTA BUTTONS ====== */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 30px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.cta-btn.primary {
+    background: white;
+    color: #0051ff;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+    background: #f8f9ff;
+}
+
+.cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    border-color: white;
+}
+
+
+/* ====== HERO STATS ====== */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 81, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 120px;
+}
+
+.stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 81, 255, 0.15);
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0051ff;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ====== ANIMAÇÕES VARIADAS PARA DIFERENTES HEROS ====== */
+
+/* 1. INDEX HERO - Animação de pulso suave */
+.index-hero .hero-icon {
+    animation: gentle-pulse-index 4s infinite ease-in-out;
+}
+
+@keyframes gentle-pulse-index {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+/* 2. PORTFOLIO HERO - Flutuação com rotação suave */
+.portfolio-hero .hero-icon {
+    animation: float-rotate 6s infinite ease-in-out;
+}
+
+@keyframes float-rotate {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg);
+    }
+    33% { 
+        transform: translateY(-10px) rotate(5deg);
+    }
+    66% { 
+        transform: translateY(5px) rotate(-3deg);
+    }
+}
+
+/* 4. PRICING HERO - Animação de moeda (girando e flutuando) */
+.pricing-hero .hero-icon {
+    animation: coin-spin 4s infinite ease-in-out;
+}
+
+@keyframes coin-spin {
+    0%, 100% { 
+        transform: rotateY(0deg) scale(1);
+    }
+    25% { 
+        transform: rotateY(90deg) scale(1.05);
+    }
+    50% { 
+        transform: rotateY(180deg) scale(1);
+    }
+    75% { 
+        transform: rotateY(270deg) scale(0.95);
+    }
+}
+
+/* 5. YCH HERO - Animação de pincel (traço suave) */
+.ych-hero .hero-icon {
+    animation: brush-stroke 3s infinite ease-in-out;
+}
+
+@keyframes brush-stroke {
+    0%, 100% { 
+        transform: translateX(0) rotate(0deg);
+    }
+    33% { 
+        transform: translateX(8px) rotate(10deg);
+    }
+    66% { 
+        transform: translateX(-8px) rotate(-10deg);
+    }
+}
+
+/* 6. ORDER HERO - Animação de carrinho (indo e voltando) */
+.order-hero .hero-icon {
+    animation: cart-move 5s infinite ease-in-out;
+}
+
+@keyframes cart-move {
+    0%, 100% { 
+        transform: translateX(0);
+    }
+    25% { 
+        transform: translateX(10px);
+    }
+    50% { 
+        transform: translateX(0);
+    }
+    75% { 
+        transform: translateX(-10px);
+    }
+}
+
+/* 7. ANIMAÇÃO ALTERNATIVA: Pulsação com brilho */
+@keyframes glow-pulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(0, 81, 255, 0.3));
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(0, 81, 255, 0.6));
+    }
+}
+
+/* 8. ANIMAÇÃO ALTERNATIVA: Bounce suave */
+@keyframes gentle-bounce {
+    0%, 100% { 
+        transform: translateY(0);
+    }
+    30% { 
+        transform: translateY(-12px);
+    }
+    60% { 
+        transform: translateY(0);
+    }
+    80% { 
+        transform: translateY(-6px);
+    }
+}
+
+/* 9. ANIMAÇÃO PARA ÍCONES COM BACKGROUND GRADIENTE */
+.gradient-icon {
+    background: linear-gradient(45deg, #0051ff, #ff6b35, #21c500);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 6s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ====== ANIMAÇÕES DE ENTRADA PARA HEROS ====== */
+
+/* Fade in com slide up para título do hero */
+.portfolio-hero h1 {
+    animation: hero-title-in 1s ease-out 0.3s both;
+}
+
+.portfolio-hero .hero-sub {
+    animation: hero-subtitle-in 1s ease-out 0.5s both;
+}
+
+.portfolio-hero .hero-stats {
+    animation: hero-stats-in 1s ease-out 0.7s both;
+}
+
+@keyframes hero-title-in {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hero-subtitle-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hero-stats-in {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== RESPONSIVIDADE DAS ANIMAÇÕES ====== */
+@media (max-width: 768px) {
+    /* Reduzir animações em mobile para performance */
+    .portfolio-hero .hero-icon,
+    .index-hero .hero-icon,
+    .arttypes-hero .hero-icon,
+    .pricing-hero .hero-icon,
+    .ych-hero .hero-icon,
+    .order-hero .hero-icon {
+        animation-duration: 1.5s !important;
+        animation-iteration-count: 1 !important;
+    }
+    
+    /* Remover animações complexas em mobile */
+    .arttypes-hero .hero-icon {
+        animation: none !important;
+        background: #0051ff !important;
+        -webkit-text-fill-color: #0051ff !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    /* Para usuários que preferem reduzir movimento */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

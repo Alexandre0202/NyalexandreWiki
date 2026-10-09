@@ -1,0 +1,813 @@
+/* ===========================================
+   ESTILOS EXCLUSIVOS DA PÁGINA DE PREÇOS
+   =========================================== */
+
+/* ====== HERO DA PÁGINA DE PREÇOS ====== */
+.pricing-hero .hero-icon {
+    color: #0051ff;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* ====== SEÇÃO DE INFORMAÇÕES IMPORTANTES ====== */
+.pricing-info-section {
+    margin-bottom: 40px;
+}
+
+.pricing-info-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.info-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.info-card.important {
+    border-color: #0051ff;
+}
+
+.info-card.process {
+    border-color: #ff6b35;
+}
+
+.info-card.extras {
+    border-color: #21c500;
+}
+
+.info-card i {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.info-card.important i {
+    color: #0051ff;
+}
+
+.info-card.process i {
+    color: #ff6b35;
+}
+
+.info-card.extras i {
+    color: #21c500;
+}
+
+.info-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.4rem;
+}
+
+body[data-theme="dark"] .info-card,
+body[data-theme="dark"] .pricing-table-container,
+body[data-theme="dark"] .pricing-card,
+body[data-theme="dark"] .table-note,
+body[data-theme="dark"] .dont-draw-item,
+body[data-theme="dark"] .extra-note-box,
+body[data-theme="dark"] .faq-item {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%) !important;
+    color: #f8fafc !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+body[data-theme="dark"] .info-card h3,
+body[data-theme="dark"] .pricing-table th,
+body[data-theme="dark"] .pricing-table td,
+body[data-theme="dark"] .pricing-card h3,
+body[data-theme="dark"] .pricing-card .card-subtitle,
+body[data-theme="dark"] .pricing-card .card-body li,
+body[data-theme="dark"] .pricing-card .examples,
+body[data-theme="dark"] .table-note p,
+body[data-theme="dark"] .faq-item,
+body[data-theme="dark"] .dont-draw-item,
+body[data-theme="dark"] .extra-note-box {
+    color: #f8fafc !important;
+}
+
+body[data-theme="dark"] .pricing-card .examples {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+body[data-theme="dark"] .payment-icon,
+body[data-theme="dark"] .pricing-table tr:hover {
+    background: rgba(87, 208, 255, 0.16) !important;
+}
+
+.info-card p, .info-card ol, .info-card ul {
+    color: #555;
+    line-height: 1.6;
+}
+
+.info-card ol, .info-card ul {
+    padding-left: 20px;
+}
+
+.info-card li {
+    margin-bottom: 8px;
+}
+
+/* Ícones de pagamento */
+.payment-methods-info {
+    margin: 15px 0;
+}
+
+.payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.payment-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 81, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #0051ff;
+}
+
+.payment-icon i {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* ====== TABELA DE PREÇOS (SIMPLIFICADA) ====== */
+.pricing-table-section {
+    margin-bottom: 60px;
+}
+
+.pricing-table-container {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.pricing-table th {
+    background: linear-gradient(to right, #0051ff, #57d0ff);
+    color: white;
+    font-weight: 600;
+    text-align: left;
+    padding: 18px 15px;
+    font-size: 1rem;
+}
+
+.pricing-table th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.pricing-table th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.pricing-table td {
+    padding: 18px 15px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+.pricing-table tr:hover {
+    background-color: #f9f9ff;
+}
+
+.table-note {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 81, 255, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid #0051ff;
+}
+
+.table-note p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #444;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.table-note i {
+    color: #0051ff;
+}
+
+/* ====== CARDS DE PREÇOS DETALHADOS ====== */
+.detailed-pricing-section {
+    margin-bottom: 60px;
+}
+
+.pricing-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    position: relative;
+    border: 1px solid #eee;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    padding: 30px 25px 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.card-header h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.6rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card-header .price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0051ff;
+    margin: 15px 0;
+}
+
+.pricing-card.simple .card-header .price {
+    color: #21c500;
+}
+
+.pricing-card.standard .card-header .price {
+    color: #ff6b35;
+}
+
+.pricing-card.complex .card-header .price {
+    color: #9900ff;
+}
+
+.card-header .card-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.card-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.card-body li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-body li:last-child {
+    border-bottom: none;
+}
+
+.card-body li i {
+    color: #21c500;
+    font-size: 0.9rem;
+}
+
+.examples {
+    background: #f9f9ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.examples p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* ====== SEÇÃO "WHAT I DON'T DRAW" ====== */
+.dont-draw-section {
+    margin-bottom: 60px;
+}
+
+.dont-draw-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.dont-draw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.dont-draw-item {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.dont-draw-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.1);
+}
+
+.dont-draw-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.dont-draw-icon i {
+    font-size: 1.8rem;
+    color: #ff0000;
+}
+
+.dont-draw-item h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.dont-draw-item p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.dont-draw-note {
+    padding: 20px;
+    background: rgba(255, 174, 53, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid #ff6b35;
+}
+
+.dont-draw-note p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #444;
+    font-size: 1rem;
+}
+
+.dont-draw-note i {
+    color: #ff6b35;
+}
+
+/* ====== SEÇÃO FAQ ====== */
+.faq-section {
+    margin-bottom: 60px;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.faq-question {
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #f9f9ff;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #f0f2ff;
+}
+
+.faq-question h4 {
+    margin: 0;
+    color: #333;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.faq-question i.fa-chevron-down {
+    color: #0051ff;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 20px 25px;
+    max-height: 500px;
+}
+
+.faq-answer p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.faq-answer a {
+    color: #0051ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.faq-answer a:hover {
+    text-decoration: underline;
+}
+
+body[data-theme="dark"] .faq-section .section-header h2,
+body[data-theme="dark"] .faq-section .section-subtitle,
+body[data-theme="dark"] .faq-item,
+body[data-theme="dark"] .faq-question,
+body[data-theme="dark"] .faq-question h4,
+body[data-theme="dark"] .faq-answer,
+body[data-theme="dark"] .faq-answer p,
+body[data-theme="dark"] .faq-answer strong,
+body[data-theme="dark"] .faq-answer a {
+    color: #f8fafc !important;
+}
+
+body[data-theme="dark"] .faq-item {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+body[data-theme="dark"] .faq-question {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+body[data-theme="dark"] .faq-question:hover {
+    background: rgba(87, 208, 255, 0.16) !important;
+}
+
+body[data-theme="dark"] .faq-question i.fa-chevron-down,
+body[data-theme="dark"] .faq-answer a,
+body[data-theme="dark"] .faq-answer strong {
+    color: #57d0ff !important;
+}
+
+body[data-theme="dark"] .faq-answer p {
+    color: #d1d5db !important;
+}
+
+/* ====== CTA DA PÁGINA DE PREÇOS ====== */
+.pricing-cta {
+    background: linear-gradient(135deg, #0051ff 0%, #57d0ff 100%);
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    margin: 50px 0;
+    color: white;
+    box-shadow: 0 10px 40px rgba(0, 81, 255, 0.3);
+}
+
+.pricing-cta h2 {
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.pricing-cta p {
+    font-size: 1.2rem;
+    margin: 0 0 30px 0;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ====== NOTA DE EXTRA NA ABA DE PREÇOS ====== */
+.extra-note-box {
+    background: #ffffff;
+    padding: 18px 22px;
+    border-radius: 14px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: extraNoteFade 0.5s ease-out forwards;
+}
+
+.extra-note-box i {
+    color: #007bff;
+    margin-right: 6px;
+}
+
+.extra-note-box p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+@keyframes extraNoteFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== REMOVER LINHA DOS H2 NAS SEÇÕES BRANCAS ====== */
+.page-pricing .portfolio-section--big-white h2::after {
+    display: none;
+}
+
+/* ====== RESPONSIVIDADE PARA PRICING ====== */
+@media (max-width: 992px) {
+    .pricing-cards-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .dont-draw-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .pricing-table-container {
+        padding: 20px;
+    }
+    
+    .info-card {
+        padding: 20px;
+    }
+    
+    .card-header .price {
+        font-size: 2rem;
+    }
+    
+    .pricing-cta {
+        padding: 40px 20px;
+    }
+    
+    .pricing-cta h2 {
+        font-size: 2rem;
+    }
+    
+    .dont-draw-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-info-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .faq-question {
+        padding: 15px 20px;
+    }
+    
+    .faq-question h4 {
+        font-size: 1rem;
+    }
+    
+    .card-header, .card-body, .card-footer {
+        padding: 20px 15px;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+        min-width: auto;
+    }
+    
+    .payment-icons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+.pricing-cta h2 i.fa-palette {
+    color: #FFD700; /* Amarelo dourado */
+}
+
+/* ====== ESTILOS PARA OS ÍCONES DO FAQ - VERSÃO ESPECÍFICA ====== */
+
+/* Apenas os ícones dentro das perguntas do FAQ */
+.faq-question h4 .fa-dollar-sign,
+.faq-question h4 .fa-clock,
+.faq-question h4 .fa-redo,
+.faq-question h4 .fa-user-plus,
+.faq-question h4 .fa-paint-brush,
+.faq-question h4 .fa-ban {
+    color: #0051ff !important;
+    font-weight: 600;
+}
+
+/* Títulos do FAQ em negrito */
+.faq-question h4 {
+    font-weight: 700;
+    color: #222;
+}
+
+/* Destaque para palavras-chave nas respostas */
+.faq-answer strong {
+    color: #0051ff;
+    font-weight: 700;
+}
+
+/* Mantém os links destacados */
+.faq-answer a {
+    font-weight: 600;
+    color: #0051ff;
+}
+
+
+/* ===========================================
+   TABELA RESPONSIVA – MODO CARD (MOBILE)
+   =========================================== */
+
+@media (max-width: 600px) {
+
+    /* Esconde o cabeçalho da tabela */
+    .pricing-table thead {
+        display: none;
+    }
+
+    /* Cada linha vira um card */
+    .pricing-table,
+    .pricing-table tbody,
+    .pricing-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .pricing-table tr {
+        background: #ffffff;
+        border-radius: 14px;
+        margin-bottom: 18px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        padding: 10px 0;
+    }
+
+    /* Cada célula vira uma linha label + valor */
+    .pricing-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 12px 16px;
+        border-bottom: 1px dashed #eee;
+        font-size: 0.95rem;
+        gap: 12px;
+    }
+
+    .pricing-table td:last-child {
+        border-bottom: none;
+    }
+
+    /* Label (vem do data-label) */
+    .pricing-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #0051ff;
+        flex-shrink: 0;
+        font-size: 0.9rem;
+    }
+
+    /* Conteúdo */
+    .pricing-table td strong {
+        font-weight: 600;
+    }
+
+    /* Remove largura mínima que causa scroll */
+    .pricing-table {
+        min-width: unset;
+    }
+
+    /* Desativa hover estranho no mobile */
+    .pricing-table tr:hover {
+        background: #ffffff;
+    }
+}
+
+
+/* ====== ÍCONES DA TABELA DE PREÇOS ====== */
+.pricing-table td strong i {
+    color: #0051ff !important;
+    font-weight: 900;
+}
+
+/* ====== ÍCONES DOS CARDS DE PREÇOS DETALHADOS ====== */
+.pricing-card .card-header h3 i {
+    color: #0051ff !important;
+}
+
+
+
+
+/* ====== ÍCONES DA FAQ ====== */
+.faq-question h4 i {
+    color: #0051ff !important;
+}
+
+/* ====== ANIMAÇÃO FADE-IN PARA SEÇÃO DE INFORMAÇÕES IMPORTANTES ====== */
+.pricing-info-section {
+    animation: fadeInSection 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInSection {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
