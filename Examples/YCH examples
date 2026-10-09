@@ -1,0 +1,129 @@
+<!-- YCH of the Month - LARANJA -->
+            <section class="ych-category">
+                <div class="section-header">
+                    <h2><i class="fas fa-crown"></i> YCH of the Month</h2>
+                    <p class="section-subtitle">Special YCH available this month with limited slots</p>
+                </div>
+
+                <div class="ych-section">
+                    <!-- LEMBRENTE NO VALOR DO CARROSEU PAROU EM 14 USAR 15 NAO PAGAR ESTA LINHA-->
+                    <!-- Destaque -->
+                    <div class="ych-item ych-style">
+                        <div class="ych-content-wrapper">
+                            <div class="ych-image-section">
+                                <div class="ych-image-container ych-4x3">
+                                    <div class="carousel-wrapper">
+                                        <div class="style-block__carousel ych-carousel" data-carousel="15">
+                                            <div class="carousel-track">
+                                                <img src="/Imagens/YCH/2025 Christmas/AD.gif" alt="AD" class="ych-image" data-full="/Imagens/YCH/2025 Christmas/AD.gif">
+                                                <img src="/Imagens/YCH/2025 Christmas/1.gif" alt="AD" class="ych-image" data-full="/Imagens/YCH/2025 Christmas/1.gif">
+                                                <img src="/Imagens/YCH/2025 Christmas/2.gif" alt="AD" class="ych-image" data-full="/Imagens/YCH/2025 Christmas/2.gif">
+                                                <img src="/Imagens/YCH/2025 Christmas/3.gif" alt="AD" class="ych-image" data-full="/Imagens/YCH/2025 Christmas/3.gif">
+                                                <img src="/Imagens/YCH/2025 Christmas/4.gif" alt="AD" class="ych-image" data-full="/Imagens/YCH/2025 Christmas/4.gif">
+                                            </div>
+                                            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                                            <div class="carousel-indicators">
+                                                <button class="active" data-slide="0"></button>
+                                                <button data-slide="1"></button>
+                                                <button data-slide="2"></button>
+                                                <button data-slide="3"></button>
+                                                <button data-slide="4"></button>
+                                            </div>
+                                            <div class="card-expand-btn" data-modal="ych-modal">
+                                                <i class="fas fa-expand"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- YCH Examples Section -->
+                                <div class="ych-examples-box">
+                                    <h4><i class="fas fa-images"></i> Available Examples (4/4)</h4>
+                                    <div class="example-thumbnails">
+                                        <div class="example-thumb active" data-carousel="15" data-slide="0">
+                                            <span>1</span>
+                                        </div>
+                                        <div class="example-thumb" data-carousel="15" data-slide="1">
+                                            <span>2</span>
+                                        </div>
+                                        <div class="example-thumb" data-carousel="15" data-slide="2">
+                                            <span>3</span>
+                                        </div>
+                                        <div class="example-thumb" data-carousel="15" data-slide="3">
+                                            <span>4</span>
+                                        </div>
+                                        <div class="example-thumb" data-carousel="15"data-slide="4">
+                                            <span>5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ych-info-section">
+                                <div class="style-header">
+                                    <h2>2025 Christmas YCH!!</h2>
+                                    <span class="style-badge popular">$30</span>
+                                </div>
+                                
+                                <div class="style-description">
+                                    <p>Ready for Christmas 2025? I'm bringing you the Christmas YCH! You wrapped in twinkling lights!!</p>
+                                </div>
+                                
+                                <div class="ych-details">
+                                    <div class="ych-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-users"></i>
+                                            <span><strong>Slots:</strong> 4/5 Available</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-box"></i>
+                                            <span><strong>Included:</strong> GIF + 2PNG + Video </span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fa-solid fa-folder"></i>
+                                            <span><strong>Type:</strong> Animation / Drawing</span>
+                                        </div>
+
+                                        <div class="style-features">
+                                        <div class="feature-item">
+                                            <i class="fa-solid fa-tree"></i>
+                                            <div>
+                                                <h4>Animation:</h4>
+                                                <p>Your character is blinking, being cute and showing its little paws wrapped in a string of twinkling lights!</p>
+                                            </div>
+                                        </div>
+                                        <div class="feature-item">
+                                            <i class="fa-solid fa-paw"></i>
+                                            <div>
+                                                <h4>Species</h4>
+                                                <p>All species are welcome! Including furries!</p>
+                                            </div>
+                                        </div>
+                                        <div class="feature-item">
+                                            <i class="fa-solid fa-plus"></i>
+                                            <div>
+                                                <h4>Things that will be priced Extra.</h4>
+                                                <p>Complicated Specie, Design, Clothes, Accessories, and background!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
+                                <div class="ych-order-box">
+                                    <div class="order-alert">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <p>Limited slots available - Contact me quickly!</p>
+                                    </div>
+                                    <a href="order.html" class="ych-order-btn">Order This YCH</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </section>

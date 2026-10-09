@@ -1,0 +1,674 @@
+/* ====== INDEX PAGE SPECIFIC STYLES ====== */
+
+/* Hero Section for Index - SOBRESCREVE apenas o necessário */
+.index-hero {
+    margin: 0 0 40px 0 !important;
+    border-radius: 20px;
+    background: linear-gradient(135deg, 
+        rgba(87, 208, 255, 0.15) 0%, 
+        rgba(0, 81, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.95) 100%) !important;
+}
+
+body[data-theme="dark"] .intro-section,
+body[data-theme="dark"] .intro-content h2,
+body[data-theme="dark"] .intro-text,
+body[data-theme="dark"] .tag,
+body[data-theme="dark"] .featured-gallery .portfolio-card figcaption p,
+body[data-theme="dark"] .featured-gallery .portfolio-card .btn-twitter,
+body[data-theme="dark"] .cta-section {
+    color: #f8fafc !important;
+}
+
+/* Ícone flutuante no hero da página inicial */
+.index-hero .hero-icon {
+    animation: float 4s ease-in-out infinite !important;
+}
+
+/* Intro Section - EXCLUSIVO da index */
+.intro-section {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 0 0 50px 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 81, 255, 0.1);
+    box-sizing: border-box;
+    max-width: 100%;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.intro-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
+    flex-wrap: wrap; /* Permite quebra em telas pequenas */
+    justify-content: center; /* Centraliza em telas pequenas */
+}
+
+/* Avatar da intro */
+.intro-avatar {
+    position: relative;
+    flex-shrink: 0;            /* não deixa esmagar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagem do avatar */
+.intro-avatar img {
+    width: 340px;              /* TAMANHO PEQUENO */
+    height: auto;
+    z-index: 2;
+}
+
+.intro-content {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    flex: 1;
+    min-width: 300px; /* Largura mínima para conteúdo */
+}
+
+.intro-content h2 {
+    color: #0051ff;
+    margin: 0 0 20px 0;
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap; /* Permite quebra em telas pequenas */
+}
+
+.intro-content h2 i {
+    color: #ff6b35;
+    animation: bounce 2s infinite;
+}
+
+/* ANIMAÇÕES EXCLUSIVAS DA INDEX */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes avatarFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes avatarRotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.intro-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #333;
+    margin: 0 0 25px 0;
+    word-wrap: break-word;
+    transition: color 0.3s ease;
+}
+
+.intro-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tag {
+    background: rgba(0, 81, 255, 0.1);
+    color: #0051ff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Mantém em uma linha */
+}
+
+.tag:hover {
+    background: rgba(0, 81, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.tag i {
+    font-size: 0.9rem;
+}
+
+/* Featured Gallery for Index */
+.featured-gallery.portfolio-section--big-white {
+    padding: 40px;
+    margin: 0 0 50px 0;
+    box-sizing: border-box;
+}
+
+/* Portfolio Cards for Index - ESTILOS ESPECÍFICOS */
+.featured-gallery .portfolio-card figcaption {
+    padding: 25px 20px !important;
+    text-align: left !important;
+    box-sizing: border-box;
+}
+
+.featured-gallery .portfolio-card figcaption p {
+    color: #666;
+    line-height: 1.6;
+    margin: 10px 0 15px;
+    font-size: 0.95rem;
+    flex-grow: 1;
+    word-wrap: break-word;
+    transition: color 0.3s ease;
+}
+
+/* Botão Twitter específico da index */
+.featured-gallery .portfolio-card .btn-twitter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #1DA1F2;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap; /* Mantém texto em uma linha */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona "..." se texto for muito longo */
+}
+
+.featured-gallery .portfolio-card .btn-twitter:hover {
+    background: #0c85d0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(29, 161, 242, 0.3);
+}
+
+.featured-gallery .portfolio-card .btn-twitter i {
+    font-size: 1.1rem;
+    flex-shrink: 0; /* Impede que o ícone diminua */
+}
+
+/* CTA Section específica da index - CORRIGIDO PARA RESPONSIVIDADE */
+.cta-section {
+    background: linear-gradient(135deg, #0051ff 0%, #57d0ff 100%);
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    margin: 50px 0;
+    color: white;
+    box-shadow: 0 10px 40px rgba(0, 81, 255, 0.3);
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse */
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Permite quebra em telas pequenas */
+    word-wrap: break-word;
+}
+
+.cta-content h2 i {
+    color: #ffd700;
+    animation: spin 3s linear infinite;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin: 0 0 30px 0;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+    padding: 0 10px; /* Padding para não colar nas bordas */
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap; /* quebra só se precisar */
+}
+
+
+/* BOTÕES CTA CORRIGIDOS PARA RESPONSIVIDADE */
+.cta-btn {
+    display: inline-flex;   /* botão do tamanho do conteúdo */
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 14px 26px;     /* um pouco menor */
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    min-width: 180px;       /* tamanho consistente */
+    max-width: 260px;       /* NÃO deixa virar um monstrão */
+    min-height: 52px;
+
+    white-space: nowrap;    /* mantém compacto */
+}
+
+
+.cta-btn.primary {
+    background: white;
+    color: #0051ff;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+    background: #f8f9ff;
+}
+
+.cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    border-color: white;
+}
+
+/* ====== PORTFOLIO GRID ESPECÍFICO PARA INDEX ====== */
+.portfolio-grid2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+    column-gap: 0px; 
+    row-gap: 25px;    
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================== */
+/* RESPONSIVIDADE ESPECÍFICA DA INDEX */
+/* =========================== */
+
+/* Telas grandes (acima de 1200px) */
+@media (min-width: 1201px) {
+    .portfolio-grid2 {
+        grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+    }
+}
+
+/* Telas médias (992px - 1200px) */
+@media (max-width: 1200px) and (min-width: 993px) {
+    .portfolio-grid2 {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+    
+    .cta-section {
+        padding: 50px 30px;
+    }
+    
+    .cta-content h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Tablets (768px - 992px) */
+@media (max-width: 992px) and (min-width: 769px) {
+    .intro-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .intro-content h2 {
+        justify-content: center;
+    }
+    
+    .intro-tags {
+        justify-content: center;
+    }
+    
+    .portfolio-grid2 {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+    
+    .cta-buttons {
+        flex-direction: row; /* Mantém em linha se couber */
+        flex-wrap: wrap;
+    }
+    
+    .cta-btn {
+        min-width: 180px;
+        padding: 14px 25px;
+        font-size: 1rem;
+    }
+    
+    .cta-section {
+        padding: 40px 30px;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Tablets pequenos e celulares grandes (600px - 768px) */
+@media (max-width: 768px) and (min-width: 601px) {
+    .intro-section {
+        padding: 30px 20px;
+    }
+    
+    .intro-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .featured-gallery.portfolio-section--big-white {
+        padding: 20px;
+    }
+    
+    .portfolio-grid2 {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas fixas */
+        gap: 15px;
+    }
+    
+    .cta-section {
+        padding: 40px 20px;
+        margin: 30px 0;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.8rem;
+        gap: 10px;
+    }
+    
+    .cta-content p {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column; /* Coluna em tablets pequenos */
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .cta-btn {
+    width: auto;        /* não força 100% */
+    max-width: 280px;
+    padding: 14px 22px;
+    font-size: 1rem;
+    }
+}
+
+/* Celulares (480px - 600px) */
+@media (max-width: 600px) and (min-width: 481px) {
+    .intro-container {
+        gap: 25px;
+    }
+    
+    .intro-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+    }
+    
+    .tag {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+    
+    .portfolio-grid2 {
+        grid-template-columns: 1fr; /* 1 coluna */
+        gap: 15px;
+    }
+    
+    .featured-gallery .portfolio-card figcaption {
+        padding: 20px 15px !important;
+    }
+    
+    .featured-gallery .portfolio-card .btn-twitter {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .cta-section {
+        padding: 30px 15px;
+        margin: 25px 0;
+        border-radius: 15px;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+    }
+    
+    .cta-content p {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+        padding: 0 10px;
+    }
+    
+    .cta-buttons {
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        min-width: unset;
+        padding: 14px 20px;
+        font-size: 0.95rem;
+        min-height: 55px;
+    }
+    
+    .cta-btn i {
+        font-size: 1rem;
+    }
+}
+
+/* Celulares pequenos (até 480px) - CRÍTICO PARA OS BOTÕES */
+@media (max-width: 480px) {
+    .intro-section {
+        padding: 25px 15px;
+        margin-bottom: 30px;
+    }
+    
+    .intro-container {
+        gap: 20px;
+    }
+    
+    .intro-content h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .intro-text {
+        font-size: 0.95rem;
+        text-align: center;
+    }
+    
+    .intro-tags {
+        justify-content: center;
+    }
+    
+    .tag {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        white-space: normal; /* Permite quebra em telas muito pequenas */
+        text-align: center;
+    }
+    
+    .portfolio-grid2 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        row-gap: 15px;
+    }
+    
+    .featured-gallery .portfolio-card figcaption {
+        padding: 18px 12px !important;
+    }
+    
+    .featured-gallery .portfolio-card figcaption p {
+        font-size: 0.9rem;
+    }
+    
+    .featured-gallery .portfolio-card .btn-twitter {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        white-space: normal; /* Permite quebra de texto */
+        text-align: center;
+        line-height: 1.3;
+    }
+    
+    /* CORREÇÃO CRÍTICA PARA OS BOTÕES CTA EM TELAS MUITO PEQUENAS */
+    .cta-section {
+        padding: 25px 10px !important; /* Padding mínimo */
+        margin: 20px 0;
+        border-radius: 12px;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.4rem !important;
+        margin-bottom: 12px;
+        flex-direction: column; /* Ícone acima do texto */
+        gap: 8px;
+        text-align: center;
+        padding: 0 5px;
+    }
+    
+    .cta-content p {
+        font-size: 0.9rem !important;
+        margin-bottom: 20px;
+        padding: 0 8px;
+        line-height: 1.4;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        padding: 0 5px;
+    }
+    
+    .cta-btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: unset !important;
+        padding: 12px 15px !important;
+        font-size: 0.9rem !important;
+        min-height: 50px;
+        border-radius: 10px;
+        flex-direction: row; /* Mantém ícone e texto lado a lado */
+        justify-content: center;
+        white-space: normal; /* PERMITE QUEBRA DE LINHA */
+        word-break: break-word; /* Quebra palavras longas */
+        text-align: center;
+        line-height: 1.3;
+    }
+    
+    .cta-btn i {
+        font-size: 0.95rem;
+        flex-shrink: 0; /* Impede que ícone diminua */
+    }
+    
+    /* Para textos muito longos em inglês */
+    .cta-btn span {
+        display: inline-block;
+        max-width: calc(100% - 30px); /* Reserva espaço para o ícone */
+    }
+}
+
+/* Telas extremamente pequenas (até 320px) */
+@media (max-width: 320px) {
+    .cta-content h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    .cta-content p {
+        font-size: 0.85rem !important;
+    }
+    
+    .cta-btn {
+        padding: 10px 12px !important;
+        font-size: 0.85rem !important;
+        min-height: 45px;
+        flex-wrap: wrap; /* Permite quebra se necessário */
+    }
+    
+    .cta-btn i {
+        margin-right: 5px;
+    }
+    
+    /* Para botões com texto muito longo */
+    .cta-btn.primary,
+    .cta-btn.secondary {
+        font-size: 0.8rem !important;
+        padding: 8px 10px !important;
+    }
+    
+    /* Ajuste específico para textos em inglês */
+    .cta-btn span {
+        font-size: 0.8rem;
+    }
+}
+
+/* Correção para evitar que qualquer elemento ultrapasse a largura */
+@media (max-width: 767px) {
+    .content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .portfolio-section--big-white,
+    .intro-section,
+    .cta-section {
+        border-radius: 15px; /* Cantos mais suaves em mobile */
+    }
+}
+
+/* Garantir que imagens sejam responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prevenir overflow horizontal em qualquer elemento */
+* {
+    box-sizing: border-box;
+}

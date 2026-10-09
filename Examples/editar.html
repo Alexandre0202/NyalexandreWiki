@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar YCHs — Painel Secreto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { margin:0; font-family:'Poppins','Segoe UI',sans-serif; background:#0d0d1a; color:#e0e0f0; min-height:100vh; }
+
+        .admin-header { background:linear-gradient(135deg,#0d0d1a,#1a1a3e,#0d1a2e); border-bottom:2px solid #4a4aff44; padding:20px 36px; display:flex; align-items:center; gap:14px; position:sticky; top:0; z-index:100; box-shadow:0 4px 30px #0006; }
+        .admin-header .lock-icon { font-size:26px; color:#7a7aff; animation:pulse-lock 3s infinite; }
+        @keyframes pulse-lock { 0%,100%{opacity:1} 50%{opacity:.4} }
+        .admin-header h1 { margin:0; font-size:20px; font-weight:800; background:linear-gradient(90deg,#7a7aff,#b06bff,#ff6baa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .admin-header .subtitle { margin:0; font-size:11px; color:#7777aa; }
+        .header-right { margin-left:auto; display:flex; gap:10px; align-items:center; }
+
+        .btn { padding:10px 20px; border:none; border-radius:10px; font-family:'Poppins',sans-serif; font-weight:600; font-size:13px; cursor:pointer; transition:all .2s; display:inline-flex; align-items:center; gap:8px; text-decoration:none; }
+        .btn:hover { transform:translateY(-2px); }
+        .btn:active { transform:translateY(0); }
+        .btn-save { background:linear-gradient(135deg,#22c55e,#16a34a); color:#fff; box-shadow:0 4px 20px #22c55e44; font-size:14px; padding:12px 28px; }
+        .btn-save:hover { box-shadow:0 6px 28px #22c55e88; }
+        .btn-primary { background:linear-gradient(135deg,#4a4aff,#7a3aff); color:#fff; }
+        .btn-danger { background:linear-gradient(135deg,#ef4444,#b91c1c); color:#fff; }
+        .btn-ghost { background:transparent; color:#9999cc; border:1px solid #333366; }
+        .btn-ghost:hover { background:#1a1a3e; color:#e0e0f0; }
+        .btn-warning { background:linear-gradient(135deg,#f59e0b,#d97706); color:#fff; }
+        .btn-sm { padding:6px 14px; font-size:12px; border-radius:8px; }
+
+        .admin-body { max-width:1300px; margin:0 auto; padding:28px 28px 80px; }
+
+        .save-bar { background:linear-gradient(135deg,#052e16,#0a3d1a); border:1px solid #22c55e44; border-radius:14px; padding:16px 22px; margin-bottom:28px; display:flex; align-items:center; gap:16px; }
+        .save-bar i { color:#22c55e; font-size:20px; flex-shrink:0; }
+        .save-bar-text strong { color:#4ade80; font-size:14px; display:block; margin-bottom:2px; }
+        .save-bar-text span { font-size:12px; color:#6b9e7a; }
+
+        .tabs { display:flex; gap:5px; margin-bottom:28px; background:#11112a; padding:5px; border-radius:12px; width:fit-content; }
+        .tab-btn { padding:9px 20px; border:none; border-radius:9px; background:transparent; color:#7777aa; font-family:'Poppins',sans-serif; font-weight:600; font-size:13px; cursor:pointer; transition:all .2s; display:flex; align-items:center; gap:7px; }
+        .tab-btn:hover { color:#e0e0f0; background:#1a1a3e; }
+        .tab-btn.active { background:linear-gradient(135deg,#2a2a6e,#3a1a5e); color:#fff; }
+        .tab-content { display:none; }
+        .tab-content.active { display:block; }
+
+        .section-row { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+        .section-title { margin:0; font-size:17px; font-weight:700; color:#c0c0ff; display:flex; align-items:center; gap:8px; }
+        .section-title i { color:#7a7aff; }
+        .section-badge { padding:3px 12px; border-radius:20px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+        .badge-active-section { background:#052e16; color:#4ade80; border:1px solid #166534; }
+        .badge-past-section { background:#172033; color:#60a5fa; border:1px solid #1e40af; }
+
+        .ych-list { display:flex; flex-direction:column; gap:14px; }
+        .ych-editor-card { background:#11112a; border:1px solid #2a2a4e; border-radius:14px; overflow:hidden; transition:border-color .2s; }
+        .ych-editor-card:hover { border-color:#4a4aff44; }
+        .ych-card-header { padding:14px 18px; display:flex; align-items:center; gap:12px; cursor:pointer; user-select:none; background:#16163a; transition:background .15s; }
+        .ych-card-header:hover { background:#1c1c44; }
+        .ych-status-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+        .dot-open    { background:#22c55e; box-shadow:0 0 7px #22c55e; }
+        .dot-closed  { background:#ef4444; box-shadow:0 0 7px #ef4444; }
+        .dot-limited { background:#f59e0b; box-shadow:0 0 7px #f59e0b; }
+        .dot-waitlist{ background:#8b5cf6; box-shadow:0 0 7px #8b5cf6; }
+        .ych-card-title { flex:1; font-size:14px; font-weight:700; color:#e0e0ff; }
+        .ych-card-meta { font-size:11px; color:#7777aa; display:flex; align-items:center; gap:14px; }
+        .status-badge { padding:2px 10px; border-radius:20px; font-size:10px; font-weight:700; text-transform:uppercase; }
+        .badge-open    { background:#14532d; color:#4ade80; }
+        .badge-closed  { background:#450a0a; color:#f87171; }
+        .badge-limited { background:#451a03; color:#fbbf24; }
+        .badge-waitlist{ background:#2e1065; color:#a78bfa; }
+        .toggle-arrow { color:#5555aa; font-size:11px; transition:transform .2s; }
+        .ych-editor-card.expanded .toggle-arrow { transform:rotate(180deg); }
+        .ych-card-body { display:none; padding:22px; border-top:1px solid #2a2a4e; }
+        .ych-editor-card.expanded .ych-card-body { display:block; }
+
+        .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
+        .form-grid.cols-3 { grid-template-columns:1fr 1fr 1fr; }
+        .form-grid.cols-1 { grid-template-columns:1fr; }
+        .form-group { display:flex; flex-direction:column; gap:5px; }
+        .form-group label { font-size:11px; font-weight:600; color:#9999cc; text-transform:uppercase; letter-spacing:.5px; display:flex; align-items:center; gap:5px; }
+        .form-control { background:#0d0d24; border:1px solid #2a2a4e; border-radius:8px; padding:9px 13px; color:#e0e0ff; font-family:'Poppins',sans-serif; font-size:13px; transition:border-color .2s,box-shadow .2s; width:100%; }
+        .form-control:focus { outline:none; border-color:#6060ff; box-shadow:0 0 0 3px #4a4aff22; }
+        select.form-control option { background:#0d0d24; }
+        textarea.form-control { resize:vertical; min-height:75px; line-height:1.5; }
+
+        .ratio-selector { display:flex; gap:8px; }
+        .ratio-option { flex:1; border:2px solid #2a2a4e; border-radius:10px; padding:10px 8px; cursor:pointer; text-align:center; transition:all .2s; background:#0d0d24; }
+        .ratio-option:hover { border-color:#5555aa; background:#16163a; }
+        .ratio-option.selected { border-color:#7a7aff; background:#1e1e4a; }
+        .ratio-visual { margin:0 auto 6px; background:#4a4aff33; border:2px solid #7a7aff66; border-radius:3px; }
+        .ratio-16x9 { width:44px; height:25px; }
+        .ratio-4x3  { width:36px; height:27px; }
+        .ratio-2x2  { width:28px; height:28px; }
+        .ratio-2x3  { width:24px; height:36px; }
+        .ratio-label { font-size:12px; font-weight:700; color:#c0c0ff; }
+        .ratio-desc  { font-size:10px; color:#7777aa; margin-top:2px; }
+
+        .status-selector { display:flex; gap:8px; flex-wrap:wrap; }
+        .status-option { flex:1; min-width:90px; border:2px solid #2a2a4e; border-radius:10px; padding:10px 6px; cursor:pointer; text-align:center; transition:all .2s; background:#0d0d24; }
+        .status-option:hover { border-color:#5555aa; }
+        .status-option.sel-open    { border-color:#22c55e; background:#052e16; }
+        .status-option.sel-closed  { border-color:#ef4444; background:#1c0606; }
+        .status-option.sel-limited { border-color:#f59e0b; background:#1c0e00; }
+        .status-option.sel-waitlist{ border-color:#8b5cf6; background:#130a2a; }
+        .s-icon { font-size:18px; margin-bottom:3px; }
+        .s-name { font-size:11px; font-weight:700; }
+        .s-desc { font-size:9px; color:#7777aa; margin-top:2px; }
+
+        .images-list { display:flex; flex-direction:column; gap:7px; margin-bottom:8px; }
+        .image-row { display:flex; align-items:center; gap:8px; background:#0d0d24; border:1px solid #2a2a4e; border-radius:7px; padding:7px 11px; }
+        .img-index { font-size:10px; font-weight:700; color:#6666aa; width:18px; text-align:center; flex-shrink:0; }
+        .img-role { font-size:10px; color:#7777cc; width:72px; flex-shrink:0; }
+        .img-role.is-ad { color:#fbbf24; }
+        .image-row input { flex:1; }
+        .btn-icon { background:none; border:none; color:#5555aa; cursor:pointer; font-size:14px; padding:3px 6px; border-radius:5px; transition:all .15s; }
+        .btn-icon:hover { color:#ef4444; background:#1c0606; }
+
+        .card-section { background:#0d0d24; border:1px dashed #2a2a4e; border-radius:9px; padding:13px 15px; margin-bottom:14px; }
+        .card-section h4 { margin:0 0 10px; font-size:12px; font-weight:700; color:#9999cc; text-transform:uppercase; letter-spacing:.5px; display:flex; align-items:center; gap:7px; }
+        .card-footer { display:flex; justify-content:flex-end; gap:8px; padding-top:14px; border-top:1px solid #1e1e40; margin-top:16px; }
+
+        .help-tip { display:inline-flex; align-items:center; justify-content:center; width:14px; height:14px; background:#2a2a5e; border-radius:50%; font-size:9px; color:#7a7aff; cursor:help; position:relative; }
+        .help-tip:hover::after { content:attr(data-tip); position:absolute; bottom:calc(100% + 5px); left:50%; transform:translateX(-50%); background:#1a1a4a; color:#c0c0ff; border:1px solid #4a4aff44; border-radius:7px; padding:5px 9px; font-size:10px; white-space:normal; max-width:200px; text-align:center; z-index:100; font-family:'Poppins',sans-serif; font-weight:400; }
+
+        .guide-card { background:#11112a; border:1px solid #2a2a4e; border-radius:13px; padding:20px; margin-bottom:16px; }
+        .guide-card h3 { margin:0 0 14px; color:#c0c0ff; font-size:14px; display:flex; align-items:center; gap:8px; }
+        .guide-card h3 i { color:#7a7aff; }
+        .guide-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+        .guide-item { background:#0d0d24; padding:11px; border-radius:9px; font-size:12px; color:#9999cc; line-height:1.5; }
+        .guide-item strong { color:#b0b0ff; display:block; margin-bottom:3px; }
+        pre.code-ex { background:#060614; padding:12px; border-radius:7px; color:#a0ffa0; font-size:11px; overflow-x:auto; margin:0; line-height:1.6; }
+
+        .toast { position:fixed; bottom:28px; right:28px; background:#1e1e4a; border:1px solid #4a4aff44; border-left:4px solid #7a7aff; border-radius:12px; padding:12px 18px; color:#e0e0ff; font-size:13px; font-weight:600; z-index:9999; transform:translateY(70px); opacity:0; transition:all .3s cubic-bezier(.17,.84,.44,1); display:flex; align-items:center; gap:9px; }
+        .toast.show { transform:translateY(0); opacity:1; }
+        .toast.success { border-left-color:#22c55e; }
+        .toast.error   { border-left-color:#ef4444; }
+
+        ::-webkit-scrollbar { width:7px; } ::-webkit-scrollbar-track { background:#0d0d1a; } ::-webkit-scrollbar-thumb { background:#2a2a5e; border-radius:4px; } ::-webkit-scrollbar-thumb:hover { background:#4a4aff; }
+
+        @media(max-width:768px){ .admin-header{padding:14px 16px;flex-wrap:wrap;} .admin-body{padding:18px 14px 70px;} .form-grid,.form-grid.cols-3{grid-template-columns:1fr;} .tabs{width:100%;overflow-x:auto;} .guide-grid{grid-template-columns:1fr;} }
+    </style>
+</head>
+<body>
+
+<header class="admin-header">
+    <i class="fas fa-lock lock-icon"></i>
+    <div>
+        <h1>Painel Secreto — Editar YCHs</h1>
+        <p class="subtitle">Nyale Commissions · Acesso local offline</p>
+    </div>
+    <div class="header-right">
+        <button class="btn btn-save" onclick="saveYCH()">
+            <i class="fas fa-download"></i> Salvar YCH.html
+        </button>
+        <a href="YCH.html" class="btn btn-ghost" target="_blank">
+            <i class="fas fa-eye"></i> Ver Página
+        </a>
+    </div>
+</header>
+
+<div class="admin-body">
+
+    <div class="save-bar">
+        <i class="fas fa-info-circle"></i>
+        <div class="save-bar-text">
+            <strong>Como usar: edite qualquer campo → clique "Salvar YCH.html"</strong>
+            <span>O arquivo <code style="background:#0d3020;padding:1px 5px;border-radius:3px;color:#4ade80;font-size:11px;">YCH.html</code> completo é baixado automaticamente. Substitua o original na pasta e manda pro seu amigo hospedar — sem copiar código!</span>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('tab-ychs',this)"><i class="fas fa-paint-brush"></i> YCHs</button>
+        <button class="tab-btn" onclick="switchTab('tab-add',this)"><i class="fas fa-plus"></i> Adicionar Novo</button>
+        <button class="tab-btn" onclick="switchTab('tab-guide',this)"><i class="fas fa-book"></i> Guia</button>
+    </div>
+
+    <!-- TAB: YCHS -->
+    <div id="tab-ychs" class="tab-content active">
+        <div class="section-row">
+            <h2 class="section-title"><i class="fas fa-bolt"></i> YCHs Ativos</h2>
+            <span class="section-badge badge-active-section"><i class="fas fa-circle"></i> Active YCH</span>
+        </div>
+        <div class="ych-list" id="list-active"></div>
+
+        <div class="section-row" style="margin:34px 0 16px;">
+            <h2 class="section-title"><i class="fas fa-history"></i> YCHs Anteriores</h2>
+            <span class="section-badge badge-past-section"><i class="fas fa-archive"></i> Past YCH</span>
+        </div>
+        <div class="ych-list" id="list-past"></div>
+    </div>
+
+    <!-- TAB: ADD -->
+    <div id="tab-add" class="tab-content">
+        <h2 class="section-title" style="margin-bottom:20px;"><i class="fas fa-plus-circle"></i> Adicionar Novo YCH</h2>
+        <div style="background:#11112a;border:1px solid #2a2a4e;border-radius:14px;padding:26px;">
+            <div class="form-grid cols-3">
+                <div class="form-group"><label>Nome do YCH</label><input class="form-control" id="n-name" placeholder="Easter Egg Painter YCH!"/></div>
+                <div class="form-group"><label>Preço</label><input class="form-control" id="n-price" placeholder="$35 USD"/></div>
+                <div class="form-group">
+                    <label>Nº Carrossel <span class="help-tip" data-tip="Use 20+ para novos YCHs. Os existentes usam 2-19.">?</span></label>
+                    <input class="form-control" id="n-carousel" type="number" placeholder="20"/>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="form-group"><label>Descrição</label><textarea class="form-control" id="n-desc" placeholder="Descrição curta do YCH..."></textarea></div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <div class="form-group"><label>Included</label><input class="form-control" id="n-included" placeholder="GIF + PNG + MP4"/></div>
+                    <div class="form-group"><label>Tipo</label><input class="form-control" id="n-type" placeholder="Animation"/></div>
+                    <div class="form-group"><label>Slots</label><input class="form-control" id="n-slots" placeholder="10/10"/></div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+                <label>Seção</label>
+                <select class="form-control" id="n-section" style="max-width:300px;">
+                    <option value="active">Active YCH (slots disponíveis)</option>
+                    <option value="past">Past YCH (encerrado)</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+                <label>Aspect Ratio <span class="help-tip" data-tip="16:9 = widescreen. 4:3 = padrão da maioria dos YCHs.">?</span></label>
+                <div class="ratio-selector">
+                    <div class="ratio-option selected" onclick="selRatioNew('ych-16x9',this)"><div class="ratio-visual ratio-16x9"></div><div class="ratio-label">16:9</div><div class="ratio-desc">Widescreen</div></div>
+                    <div class="ratio-option" onclick="selRatioNew('ych-4x3',this)"><div class="ratio-visual ratio-4x3"></div><div class="ratio-label">4:3</div><div class="ratio-desc">Clássico</div></div>
+                    <div class="ratio-option" onclick="selRatioNew('ych-2x2',this)"><div class="ratio-visual ratio-2x2"></div><div class="ratio-label">2:2</div><div class="ratio-desc">Quadrado</div></div>
+                    <div class="ratio-option" onclick="selRatioNew('ych-2x3',this)"><div class="ratio-visual ratio-2x3"></div><div class="ratio-label">2:3</div><div class="ratio-desc">Retrato</div></div>
+                </div>
+                <input type="hidden" id="n-ratio" value="ych-16x9"/>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+                <label>Tipo de Carrossel</label>
+                <select class="form-control" id="n-carouseltype" style="max-width:340px;">
+                    <option value="ych-carousel">ych-carousel (padrão)</option>
+                    <option value="ych-carousel2">ych-carousel2 (16:9 largo, ex: Shooter)</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+                <label>Status</label>
+                <div class="status-selector">
+                    <div class="status-option sel-open" onclick="selStatusNew('open',this)" id="ns-open"><div class="s-icon">🟢</div><div class="s-name" style="color:#4ade80">Aberto</div><div class="s-desc">Order aparece</div></div>
+                    <div class="status-option" onclick="selStatusNew('closed',this)" id="ns-closed"><div class="s-icon">🔴</div><div class="s-name" style="color:#f87171">Fechado</div><div class="s-desc">Desabilitado</div></div>
+                    <div class="status-option" onclick="selStatusNew('limited',this)" id="ns-limited"><div class="s-icon">🟡</div><div class="s-name" style="color:#fbbf24">Limitado</div><div class="s-desc">Alerta slots</div></div>
+                    <div class="status-option" onclick="selStatusNew('waitlist',this)" id="ns-waitlist"><div class="s-icon">🟣</div><div class="s-name" style="color:#a78bfa">Waitlist</div><div class="s-desc">Lista espera</div></div>
+                </div>
+                <input type="hidden" id="n-status" value="open"/>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+                <label>Imagens <span class="help-tip" data-tip="Index 0 = AD.gif (arte de divulgação). Os demais são exemplos preenchidos.">?</span></label>
+                <div class="images-list" id="n-imgs">
+                    <div class="image-row"><span class="img-index">0</span><span class="img-role is-ad">AD.gif</span><input class="form-control" placeholder="/Imagens/YCH/NomeYCH/AD.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div>
+                    <div class="image-row"><span class="img-index">1</span><span class="img-role">Exemplo 1</span><input class="form-control" placeholder="/Imagens/YCH/NomeYCH/1.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div>
+                </div>
+                <button class="btn btn-ghost btn-sm" onclick="addImgRowNew()" style="margin-top:7px;"><i class="fas fa-plus"></i> Adicionar imagem</button>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:flex-end;padding-top:14px;border-top:1px solid #1e1e40;">
+                <button class="btn btn-ghost" onclick="clearNewForm()">Limpar</button>
+                <button class="btn btn-primary" onclick="addNewYCH()"><i class="fas fa-plus"></i> Adicionar YCH</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB: GUIDE -->
+    <div id="tab-guide" class="tab-content">
+        <h2 class="section-title" style="margin-bottom:20px;"><i class="fas fa-book-open"></i> Guia de Uso</h2>
+        <div class="guide-card">
+            <h3><i class="fas fa-shoe-prints"></i> Fluxo completo</h3>
+            <div style="font-size:13px;color:#9999cc;line-height:2;">
+                1. Abra este arquivo no navegador (duplo clique)<br>
+                2. Faça suas edições nos campos dos YCHs<br>
+                3. Clique <strong style="color:#4ade80">Salvar YCH.html</strong> (canto superior direito)<br>
+                4. O arquivo <strong style="color:#4ade80">YCH.html</strong> completo é baixado<br>
+                5. Substitua o original na sua pasta pelo novo<br>
+                6. Manda a pasta pro seu amigo hospedar ✓
+            </div>
+        </div>
+        <div class="guide-card">
+            <h3><i class="fas fa-crop-alt"></i> Aspect Ratio — Qual usar?</h3>
+            <div class="guide-grid">
+                <div class="guide-item"><strong>16:9 → ych-16x9</strong>Widescreen. Ex: Easter Egg, Shooter YCH.</div>
+                <div class="guide-item"><strong>4:3 → ych-4x3</strong>Padrão. A maioria dos YCHs usa este. Ex: What YCH, Perspective, Blehh.</div>
+                <div class="guide-item"><strong>ych-carousel</strong>Carrossel padrão para a maioria dos casos.</div>
+                <div class="guide-item"><strong>ych-carousel2</strong>Para 16:9 mais largo. Ex: Shooter YCH.</div>
+            </div>
+        </div>
+        <div class="guide-card">
+            <h3><i class="fas fa-toggle-on"></i> Status — O que cada um faz</h3>
+            <div style="display:flex;flex-direction:column;gap:10px;font-size:12px;">
+                <div style="display:flex;gap:10px;align-items:center;"><span class="status-badge badge-open">Open</span><span style="color:#9999cc">Botão azul "Order This YCH" aparece.</span></div>
+                <div style="display:flex;gap:10px;align-items:center;"><span class="status-badge badge-closed">Closed</span><span style="color:#9999cc">Botão cinza desabilitado "Currently Closed".</span></div>
+                <div style="display:flex;gap:10px;align-items:center;"><span class="status-badge badge-limited">Limited</span><span style="color:#9999cc">Botão azul com alerta amarelo de poucos slots.</span></div>
+                <div style="display:flex;gap:10px;align-items:center;"><span class="status-badge badge-waitlist">Waitlist</span><span style="color:#9999cc">Botão "Join Waitlist" com aviso roxo.</span></div>
+            </div>
+        </div>
+        <div class="guide-card">
+            <h3><i class="fas fa-folder"></i> Estrutura de pastas das imagens</h3>
+            <pre class="code-ex">/Imagens/YCH/NomeDoYCH/AD.gif   ← arte de divulgação (slide 0)
+/Imagens/YCH/NomeDoYCH/1.gif   ← exemplo preenchido 1
+/Imagens/YCH/NomeDoYCH/2.gif   ← exemplo preenchido 2
+/Imagens/YCH/NomeDoYCH/3.gif   ← exemplo preenchido 3</pre>
+        </div>
+        <div class="guide-card">
+            <h3><i class="fas fa-hashtag"></i> Números de carrossel já usados</h3>
+            <p style="font-size:13px;color:#9999cc;margin:0;">Existentes: <strong style="color:#b0b0ff">2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 18, 19</strong>. Para novos use <strong style="color:#4ade80">20+</strong>.</p>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg"></span></div>
+
+<script>
+// =====================================================
+// DADOS — espelho da YCH.html
+// =====================================================
+const ychData = {
+    active: [
+        { id:'easter-egg', name:'Easter Egg Painter YCH!', price:'$35 USD', carousel:18, carouselType:'ych-carousel', ratio:'ych-16x9', status:'open', slots:'10/10', included:'GIF + PNG + MP4', type:'Animation', description:'Your character is painting a cute Easter egg with a brush! An adorable chibi animation loop perfect for the Easter season. Ponies and furries - all species welcome!', features:[{icon:'fa-paintbrush',title:'Easter Animation',desc:'Your OC painting a cute Easter egg with a brush in an adorable chibi animation loop.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including ponies and furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complex designs, clothing, accessories & details.'}], images:['/Imagens/YCH/EasterEgg/AD.gif','/Imagens/YCH/EasterEgg/1.gif','/Imagens/YCH/EasterEgg/2.gif'] },
+        { id:'silly-goof', name:'Silly Goof YCH!', price:'$30 USD', carousel:19, carouselType:'ych-carousel', ratio:'ych-16x9', status:'open', slots:'10/10', included:'GIF + PNG', type:'Animation', description:'Your character making the iconic silly goof expression! An adorable looping animation.', features:[{icon:'fa-face-grin-tongue',title:'Silly Animation',desc:'Your OC goofing around in a cute looping animation.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complex designs, clothing, accessories.'}], images:['/Imagens/YCH/SillyGoof/AD.gif','/Imagens/YCH/SillyGoof/1.gif','/Imagens/YCH/SillyGoof/2.gif'] }
+    ],
+    past: [
+        { id:'what-ych', name:'What YCH!', price:'$40 USD', carousel:2, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'10/10', included:'GIF + 2PNG + Telegram Sticker', type:'Animation', description:'Your OC appears in a smooth looping animation, expressing confusion with a floating question mark above their head.', features:[{icon:'fa-note-sticky',title:'Sticker',desc:'Your OC loops a confused reaction with a floating question mark.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['Imagens/YCH/WhatYCH/AD.gif','Imagens/YCH/WhatYCH/1.gif','Imagens/YCH/WhatYCH/2.gif','Imagens/YCH/WhatYCH/3.gif','Imagens/YCH/WhatYCH/4.gif'] },
+        { id:'christmas-2025', name:'2025 Christmas YCH!!', price:'$30 USD', carousel:15, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'5/5', included:'GIF + 2PNG + Video', type:'Animation / Drawing', description:"Ready for Christmas 2025? I'm bringing you the Christmas YCH! You wrapped in twinkling lights!!", features:[{icon:'fa-tree',title:'Animation:',desc:'Your character is blinking, being cute and showing its little paws wrapped in a string of twinkling lights!'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories, and background!'}], images:['/Imagens/YCH/2025 Christmas/AD.gif','/Imagens/YCH/2025 Christmas/1.gif','/Imagens/YCH/2025 Christmas/2.gif','/Imagens/YCH/2025 Christmas/3.gif','/Imagens/YCH/2025 Christmas/4.gif'] },
+        { id:'blehh', name:'Blehh YCH!', price:'$40 USD', carousel:4, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'13/20', included:'MP4 + GIF + PNG', type:'Animation', description:'Your character doing the iconic Bleh Viral internet meme, but animated by me!', features:[{icon:'fa-earth-americas',title:'Meme',desc:'Your character making a meme, 4 animated scenes.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/Blehh/AD.gif','/Imagens/YCH/Blehh/1.gif','/Imagens/YCH/Blehh/2.gif'] },
+        { id:'perspective', name:'Perspective YCH!', price:'$45 USD', carousel:5, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'4/4', included:'MP4 + GIF + PNG', type:'Animation', description:'Your character, animated in the Perspective meme that became a trend on the internet!, but animated by me!', features:[{icon:'fa-earth-americas',title:'Meme',desc:'Your character dancing to the rhythm of the meme from 2 perspectives.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/Perspective/AD.gif','/Imagens/YCH/Perspective/1.gif','/Imagens/YCH/Perspective/2.gif','/Imagens/YCH/Perspective/3.gif','/Imagens/YCH/Perspective/4.gif'] },
+        { id:'valentines-2025', name:'2025 Valentines YCH!', price:'$45 USD', carousel:6, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'5/5', included:'MP4 + GIF + PNG', type:'Animation', description:"A Valentine's YCH full of love! Your character sending hearts in a lovely animated scene.", features:[{icon:'fa-heart',title:'Valentine Animation',desc:"Your character in a lovely animated Valentine's scene."},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/2025 Valentines/AD.gif','/Imagens/YCH/2025 Valentines/1.gif','/Imagens/YCH/2025 Valentines/2.gif','/Imagens/YCH/2025 Valentines/3.gif','/Imagens/YCH/2025 Valentines/4.gif'] },
+        { id:'shooter', name:'2024 Olympic Shooter YCH!', price:'$40 USD', carousel:9, carouselType:'ych-carousel2', ratio:'ych-16x9', status:'closed', slots:'2/5', included:'MP4 + GIF + PNG', type:'Animation', description:'Something that went viral at the 2024 Olympics was shooter Yusuf Dikec, for shooting and finishing in 2nd place without using any equipment, so I reproduced the same scene but is your character shooting!', features:[{icon:'fa-gun',title:'Meme',desc:'His character, along with his country name, is shown shooting without any equipment.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/ShooterYCH/AD.gif','/Imagens/YCH/ShooterYCH/1.gif','/Imagens/YCH/ShooterYCH/2.gif'] },
+        { id:'bleep', name:'Bleep YCH!', price:'$12 USD', carousel:13, carouselType:'ych-carousel', ratio:'ych-4x3', status:'closed', slots:'2/5', included:'PNG', type:'Drawing', description:"And here's my first YCH! Your character holding a heart with a personalized message!", features:[{icon:'fa-face-grin-tongue',title:'Thematic',desc:'Your character holding a heart with a personalized message.'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:['/Imagens/YCH/Bleep/AD.gif','/Imagens/YCH/Bleep/1.gif','/Imagens/YCH/Bleep/2.gif'] }
+    ]
+};
+
+// =====================================================
+// RENDER
+// =====================================================
+function renderCards(){ renderList('active',document.getElementById('list-active')); renderList('past',document.getElementById('list-past')); }
+function renderList(section,container){ container.innerHTML=''; ychData[section].forEach((y,i)=>container.appendChild(buildCard(y,section,i))); }
+
+function buildCard(ych,section,index){
+    const dotMap={open:'dot-open',closed:'dot-closed',limited:'dot-limited',waitlist:'dot-waitlist'};
+    const badgeMap={open:'badge-open',closed:'badge-closed',limited:'badge-limited',waitlist:'badge-waitlist'};
+    const labelMap={open:'Open',closed:'Closed',limited:'Limited',waitlist:'Waitlist'};
+    const rOpts=['ych-16x9','ych-4x3','ych-2x2','ych-2x3'],rL=['16:9','4:3','2:2','2:3'],rD=['Widescreen','Clássico','Quadrado','Retrato'],rV=['ratio-16x9','ratio-4x3','ratio-2x2','ratio-2x3'];
+    const ratioButtons=rOpts.map((r,i)=>`<div class="ratio-option ${ych.ratio===r?'selected':''}" onclick="setField('${section}',${index},'ratio','${r}',this,'ratio')"><div class="ratio-visual ${rV[i]}"></div><div class="ratio-label">${rL[i]}</div><div class="ratio-desc">${rD[i]}</div></div>`).join('');
+    const sOpts=['open','closed','limited','waitlist'],sE=['🟢','🔴','🟡','🟣'],sN=['Aberto','Fechado','Limitado','Waitlist'],sC=['#4ade80','#f87171','#fbbf24','#a78bfa'],sD=['Order aparece','Desabilitado','Alerta slots','Lista espera'];
+    const statusButtons=sOpts.map((s,i)=>`<div class="status-option ${ych.status===s?'sel-'+s:''}" onclick="setField('${section}',${index},'status','${s}',this,'status')"><div class="s-icon">${sE[i]}</div><div class="s-name" style="color:${sC[i]}">${sN[i]}</div><div class="s-desc">${sD[i]}</div></div>`).join('');
+    const imgRows=ych.images.map((src,i)=>`<div class="image-row"><span class="img-index">${i}</span><span class="img-role ${i===0?'is-ad':''}">${i===0?'AD.gif':'Ex '+i}</span><input class="form-control" value="${src}" onchange="updateImg('${section}',${index},${i},this.value)"/><button class="btn-icon" onclick="removeImg('${section}',${index},${i})"><i class="fas fa-trash"></i></button></div>`).join('');
+    const card=document.createElement('div');
+    card.className='ych-editor-card';
+    card.innerHTML=`
+        <div class="ych-card-header" onclick="toggleCard(this)">
+            <div class="ych-status-dot ${dotMap[ych.status]||'dot-closed'}"></div>
+            <div class="ych-card-title">${ych.name}</div>
+            <div class="ych-card-meta"><span>${ych.price}</span><span>carrossel #${ych.carousel}</span><span class="status-badge ${badgeMap[ych.status]||'badge-closed'}">${labelMap[ych.status]||'Closed'}</span></div>
+            <i class="fas fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="ych-card-body">
+            <div class="card-section">
+                <h4><i class="fas fa-info-circle"></i> Informações Básicas</h4>
+                <div class="form-grid cols-3">
+                    <div class="form-group"><label>Nome</label><input class="form-control" value="${ych.name}" onchange="setField('${section}',${index},'name',this.value,null,'text')"/></div>
+                    <div class="form-group"><label>Preço</label><input class="form-control" value="${ych.price}" onchange="setField('${section}',${index},'price',this.value,null,'text')"/></div>
+                    <div class="form-group"><label>Nº Carrossel</label><input class="form-control" type="number" value="${ych.carousel}" onchange="setField('${section}',${index},'carousel',parseInt(this.value),null,'text')"/></div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>Descrição</label><textarea class="form-control" onchange="setField('${section}',${index},'description',this.value,null,'text')">${ych.description}</textarea></div>
+                    <div style="display:flex;flex-direction:column;gap:10px;">
+                        <div class="form-group"><label>Included</label><input class="form-control" value="${ych.included}" onchange="setField('${section}',${index},'included',this.value,null,'text')"/></div>
+                        <div class="form-group"><label>Tipo</label><input class="form-control" value="${ych.type}" onchange="setField('${section}',${index},'type',this.value,null,'text')"/></div>
+                        <div class="form-group"><label>Slots (ex: 5/10)</label><input class="form-control" value="${ych.slots}" onchange="setField('${section}',${index},'slots',this.value,null,'text')"/></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-section">
+                <h4><i class="fas fa-crop-alt"></i> Aspect Ratio</h4>
+                <div class="ratio-selector">${ratioButtons}</div>
+                <div class="form-group" style="margin-top:11px;"><label>Tipo de Carrossel</label>
+                    <select class="form-control" onchange="setField('${section}',${index},'carouselType',this.value,null,'text')" style="max-width:340px;">
+                        <option value="ych-carousel" ${ych.carouselType==='ych-carousel'?'selected':''}>ych-carousel (padrão)</option>
+                        <option value="ych-carousel2" ${ych.carouselType==='ych-carousel2'?'selected':''}>ych-carousel2 (16:9 largo, ex: Shooter)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card-section">
+                <h4><i class="fas fa-toggle-on"></i> Status de Disponibilidade</h4>
+                <div class="status-selector">${statusButtons}</div>
+            </div>
+            <div class="card-section">
+                <h4><i class="fas fa-images"></i> Imagens do Carrossel <span class="help-tip" data-tip="Index 0 = AD.gif (obrigatório). Os demais são exemplos preenchidos.">?</span></h4>
+                <div class="images-list" id="imgs-${section}-${index}">${imgRows}</div>
+                <button class="btn btn-ghost btn-sm" onclick="addImg('${section}',${index})" style="margin-top:7px;"><i class="fas fa-plus"></i> Adicionar imagem</button>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-warning btn-sm" onclick="moveYCH('${section}',${index})"><i class="fas fa-exchange-alt"></i> Mover para ${section==='active'?'Past':'Active'}</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteYCH('${section}',${index})"><i class="fas fa-trash"></i> Remover</button>
+            </div>
+        </div>`;
+    return card;
+}
+
+function toggleCard(h){ h.parentElement.classList.toggle('expanded'); }
+
+function setField(section,index,field,value,el,type){
+    ychData[section][index][field]=value;
+    if(type==='ratio'&&el){ el.closest('.ratio-selector').querySelectorAll('.ratio-option').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); }
+    if(type==='status'&&el){ el.closest('.status-selector').querySelectorAll('.status-option').forEach(o=>{o.className='status-option';}); el.classList.add('sel-'+value); }
+    refreshHeader(section,index);
+}
+
+function refreshHeader(section,index){
+    const ych=ychData[section][index];
+    const dotMap={open:'dot-open',closed:'dot-closed',limited:'dot-limited',waitlist:'dot-waitlist'};
+    const badgeMap={open:'badge-open',closed:'badge-closed',limited:'badge-limited',waitlist:'badge-waitlist'};
+    const labelMap={open:'Open',closed:'Closed',limited:'Limited',waitlist:'Waitlist'};
+    const cards=document.querySelectorAll(`#list-${section} .ych-editor-card`);
+    if(!cards[index]) return;
+    const h=cards[index].querySelector('.ych-card-header');
+    h.querySelector('.ych-status-dot').className=`ych-status-dot ${dotMap[ych.status]||'dot-closed'}`;
+    h.querySelector('.ych-card-title').textContent=ych.name;
+    const meta=h.querySelector('.ych-card-meta');
+    meta.children[0].textContent=ych.price;
+    meta.children[1].textContent=`carrossel #${ych.carousel}`;
+    const b=meta.querySelector('.status-badge');
+    b.className=`status-badge ${badgeMap[ych.status]||'badge-closed'}`;
+    b.textContent=labelMap[ych.status]||'Closed';
+}
+
+function updateImg(s,i,ii,v){ ychData[s][i].images[ii]=v; }
+function removeImg(s,i,ii){ ychData[s][i].images.splice(ii,1); reRenderImgs(s,i); }
+function addImg(s,i){ ychData[s][i].images.push(''); reRenderImgs(s,i); }
+function reRenderImgs(s,i){
+    const c=document.getElementById(`imgs-${s}-${i}`);
+    c.innerHTML=ychData[s][i].images.map((src,ii)=>`<div class="image-row"><span class="img-index">${ii}</span><span class="img-role ${ii===0?'is-ad':''}">${ii===0?'AD.gif':'Ex '+ii}</span><input class="form-control" value="${src}" onchange="updateImg('${s}',${i},${ii},this.value)"/><button class="btn-icon" onclick="removeImg('${s}',${i},${ii})"><i class="fas fa-trash"></i></button></div>`).join('');
+}
+function moveYCH(section,index){ const dest=section==='active'?'past':'active'; const item=ychData[section].splice(index,1)[0]; ychData[dest].push(item); renderCards(); showToast(`"${item.name}" movido para ${dest==='active'?'Active':'Past'}`,'success'); }
+function deleteYCH(section,index){ const name=ychData[section][index].name; if(confirm(`Remover "${name}"?`)){ ychData[section].splice(index,1); renderCards(); showToast(`"${name}" removido`,'success'); } }
+
+// =====================================================
+// ADD NEW
+// =====================================================
+function selRatioNew(r,el){ document.getElementById('n-ratio').value=r; el.closest('.ratio-selector').querySelectorAll('.ratio-option').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); }
+function selStatusNew(s,el){ document.getElementById('n-status').value=s; ['open','closed','limited','waitlist'].forEach(x=>{ document.getElementById('ns-'+x).className='status-option'; }); el.classList.add('sel-'+s); }
+function addImgRowNew(){ const l=document.getElementById('n-imgs'); const c=l.children.length; const r=document.createElement('div'); r.className='image-row'; r.innerHTML=`<span class="img-index">${c}</span><span class="img-role">Ex ${c}</span><input class="form-control" placeholder="/Imagens/YCH/Nome/${c}.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button>`; l.appendChild(r); }
+function removeImgRow(btn){ btn.closest('.image-row').remove(); }
+function clearNewForm(){ ['n-name','n-price','n-carousel','n-desc','n-included','n-type','n-slots'].forEach(id=>{ document.getElementById(id).value=''; }); document.getElementById('n-imgs').innerHTML=`<div class="image-row"><span class="img-index">0</span><span class="img-role is-ad">AD.gif</span><input class="form-control" placeholder="/Imagens/YCH/NomeYCH/AD.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div><div class="image-row"><span class="img-index">1</span><span class="img-role">Exemplo 1</span><input class="form-control" placeholder="/Imagens/YCH/NomeYCH/1.gif"/><button class="btn-icon" onclick="removeImgRow(this)"><i class="fas fa-trash"></i></button></div>`; }
+function addNewYCH(){
+    const name=document.getElementById('n-name').value.trim();
+    const price=document.getElementById('n-price').value.trim();
+    const carousel=parseInt(document.getElementById('n-carousel').value);
+    if(!name||!price||!carousel){ showToast('Preencha Nome, Preço e Nº Carrossel','error'); return; }
+    const imgs=[]; document.querySelectorAll('#n-imgs .image-row input').forEach(inp=>{ if(inp.value.trim()) imgs.push(inp.value.trim()); });
+    const section=document.getElementById('n-section').value;
+    const desc=document.getElementById('n-desc').value;
+    ychData[section].push({ id:name.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,''), name, price, carousel, carouselType:document.getElementById('n-carouseltype').value, ratio:document.getElementById('n-ratio').value, status:document.getElementById('n-status').value, slots:document.getElementById('n-slots').value||'10/10', included:document.getElementById('n-included').value||'GIF + PNG', type:document.getElementById('n-type').value||'Animation', description:desc||'', features:[{icon:'fa-paint-brush',title:'YCH',desc:desc||'Your character here!'},{icon:'fa-paw',title:'Species',desc:'All species are welcome! Including furries!'},{icon:'fa-plus',title:'Things that will be priced Extra.',desc:'Complicated Specie, Design, Clothes, Accessories.'}], images:imgs });
+    renderCards(); clearNewForm(); switchTab('tab-ychs',document.querySelector('.tab-btn')); showToast(`"${name}" adicionado!`,'success');
+}
+
+// =====================================================
+// HTML GENERATOR
+// =====================================================
+function buildItemHTML(ych,section){
+    const styleClass=section==='active'?'ych-style3':'ych-past';
+    const slides=ych.images.map((src,i)=>`                                                <img src="${src}" alt="${i===0?'AD':'YCH '+i}" class="ych-image" data-full="${src}">`).join('\n');
+    const indicators=ych.images.map((_,i)=>`                                                <button${i===0?' class="active"':''} data-slide="${i}"></button>`).join('\n');
+    const thumbs=ych.images.map((_,i)=>`\n                                        <div class="example-thumb${i===0?' active':''}" data-carousel="${ych.carousel}" data-slide="${i}"><span>${i+1}</span></div>`).join('');
+    const features=ych.features.map(f=>`\n                                        <div class="feature-item"><i class="fa-solid ${f.icon}"></i><div><h4>${f.title}</h4><p>${f.desc}</p></div></div>`).join('');
+    const statusText=ych.status==='open'||ych.status==='limited'?'Open':'Closed';
+    let orderBox='';
+    if(ych.status==='open') orderBox=`\n                                <div class="ych-order-box"><div class="order-alert"><i class="fas fa-shopping-cart"></i><p>Limited slots available - Contact me quickly!</p></div><a href="order.html" class="ych-order-btn">Order This YCH</a></div>`;
+    else if(ych.status==='limited') orderBox=`\n                                <div class="ych-order-box"><div class="order-alert"><i class="fas fa-exclamation-triangle"></i><p>Very few slots remaining! Reserve yours now.</p></div><a href="order.html" class="ych-order-btn">Order This YCH</a></div>`;
+    else if(ych.status==='waitlist') orderBox=`\n                                <div class="ych-order-box"><div class="order-alert"><i class="fas fa-list"></i><p>All slots full — join the waitlist and I'll notify you when a slot opens!</p></div><a href="order.html" class="ych-order-btn">Join Waitlist</a></div>`;
+    else orderBox=`\n                                <div class="ych-order-box"><div class="order-alert"><i class="fas fa-clock"></i><p>This YCH is currently closed. I can open it for you, but there will be an extra charge.</p></div><button class="ych-order-btn disabled" disabled>Currently Closed</button></div>`;
+    return `                    <!-- ${ych.name} -->
+                    <div class="ych-item ${styleClass}">
+                        <div class="ych-content-wrapper">
+                            <div class="ych-image-section">
+                                <div class="ych-image-container ${ych.ratio}">
+                                    <div class="carousel-wrapper">
+                                        <div class="style-block__carousel ${ych.carouselType}" data-carousel="${ych.carousel}">
+                                            <div class="carousel-track">
+${slides}
+                                            </div>
+                                            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                                            <div class="carousel-indicators">
+${indicators}
+                                            </div>
+                                            <div class="card-expand-btn" data-modal="ych-modal"><i class="fas fa-expand"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ych-examples-box">
+                                    <h4><i class="fas fa-images"></i> Examples (${ych.images.length-1}/${ych.images.length-1})</h4>
+                                    <div class="example-thumbnails">${thumbs}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ych-info-section">
+                                <div class="style-header"><h2>${ych.name}</h2><span class="style-badge">${ych.price}</span></div>
+                                <div class="style-description"><p>${ych.description}</p></div>
+                                <div class="ych-details">
+                                    <div class="ych-meta">
+                                        <div class="meta-item"><i class="fas fa-users"></i><span><strong>Status:</strong> ${ych.slots} ${statusText}</span></div>
+                                        <div class="meta-item"><i class="fas fa-box"></i><span><strong>Included:</strong> ${ych.included}</span></div>
+                                        <div class="meta-item"><i class="fa-solid fa-folder"></i><span><strong>Type:</strong> ${ych.type}</span></div>
+                                    </div>
+                                    <div class="style-features">${features}
+                                    </div>
+                                </div>${orderBox}
+                            </div>
+                        </div>
+                    </div>`;
+}
+
+function buildSections(){
+    let html='';
+    ['active','past'].forEach(section=>{
+        if(!ychData[section].length) return;
+        const title=section==='active'?'Active YCH':'Past YCH';
+        const icon=section==='active'?'bolt':'history';
+        const sub=section==='active'?'Currently available YCH commissions':'Previously available YCH commissions';
+        const items=ychData[section].map(y=>buildItemHTML(y,section)).join('\n\n                    <br><br>\n');
+        html+=`            <!-- ====== ${title.toUpperCase()} ====== -->
+            <section class="ych-category">
+                <div class="section-header">
+                    <h2><i class="fas fa-${icon}"></i> ${title}</h2>
+                    <p class="section-subtitle">${sub}</p>
+                </div>
+                <div class="ych-section">
+${items}
+                </div>
+            </section>\n\n`;
+    });
+    return html;
+}
+
+// =====================================================
+// SAVE — baixa o YCH.html completo
+// =====================================================
+function saveYCH(){
+    const totalYCHs = ychData.active.length + ychData.past.length;
+    const sections = buildSections();
+
+    const html=`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>YCH Commissions - YCH</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- SEO Meta -->
+        <meta name="description" content="YCH (Your Character Here) commissions by Nyale — limited slots, active and past examples, pricing and instructions to reserve your slot.">
+        <meta name="keywords" content="YCH, commissions, Nyale, your character here, slots">
+        <meta name="robots" content="index, follow">
+        <link rel="canonical" href="https://nyale.wikit.com.br/ych.html">
+
+        <meta property="og:title" content="Nyale Commissions - YCH">
+        <meta property="og:description" content="See available YCHs and examples by Nyale. Reserve your slot for limited YCHs.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://nyale.wikit.com.br/ych.html">
+        <meta property="og:image" content="https://nyale.wikit.com.br/Icons/preview.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://nyale.wikit.com.br/Icons/preview.png">
+
+        <script type="application/ld+json">
+        {
+            "@context":"https://schema.org",
+            "@type":"WebPage",
+            "name":"YCH - Nyale Commissions",
+            "url":"https://nyale.wikit.com.br/ych.html",
+            "inLanguage":"en-US"
+        }
+        <\/script>
+    <link rel="icon" href="/Icons/Navicon.jpg" type="WebsiteIcon">
+    <link rel="stylesheet" href="/CSS/base.css">
+    <link rel="stylesheet" href="/CSS/ych.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <header class="ms-header">
+            <a href="index.html" class="logo-link">
+                    <img src="/Icons/LOGO.png" alt="Nyale Commissions logo" class="logo">
+                    </a>
+        </header>
+
+        <nav class="ms-nav">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> <span class="nav-text"> Home</span></a></li>
+            <li><a href="portifolio.html"><i class="fas fa-images"></i> <span class="nav-text"> Portfolio</span></a></li>
+            <li><a href="arttypes.html"><i class="fas fa-palette"></i> <span class="nav-text"> Art Types</span></a></li>
+            <li><a href="pricing.html"><i class="fas fa-tags"></i> <span class="nav-text"> Pricing</span></a></li>
+            <li><a href="YCH.html" class="active"><i class="fas fa-paint-brush"></i> <span class="nav-text"> YCH'S</span></a></li>
+            <li><a href="order.html" class="order-now-btn"><i class="fas fa-shopping-cart"></i> <span class="nav-text"> Order Now</span> <i class="fas fa-arrow-right"></i></a></li>
+        </ul>
+        </nav>
+
+        <nav class="ms-bottom-bar">
+        <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i><span class="mobile-label">Home</span></a></li>
+        <li><a href="portifolio.html"><i class="fas fa-images"></i><span class="mobile-label">Portfolio</span></a></li>
+        <li><a href="arttypes.html"><i class="fas fa-palette"></i><span class="mobile-label">Art Types</span></a></li>
+        <li><a href="pricing.html"><i class="fas fa-tags"></i><span class="mobile-label">Pricing</span></a></li>
+        <li><a href="YCH.html" class="active"><i class="fas fa-paint-brush"></i><span class="mobile-label">YCH</span></a></li>
+        <li><a href="order.html"><i class="fas fa-shopping-cart"></i><span class="mobile-label">Order</span></a></li>
+        </ul>
+        </nav>
+
+        <main class="content">
+            <section class="portfolio-hero ych-hero">
+                <div class="hero-icon"><i class="fas fa-palette"></i></div>
+                <h1>YCH Commissions</h1>
+                <p class="hero-sub">Your Character Here - Fill the slots with your characters! Explore all my available YCH types with examples.</p>
+                <div class="hero-stats">
+                    <div class="stat"><span class="stat-number">${totalYCHs}+</span><span class="stat-label">YCH Types</span></div>
+                    <div class="stat"><span class="stat-number">2023-2025</span><span class="stat-label">Timeline</span></div>
+                </div>
+            </section>
+
+            <section class="portfolio-section--big-white">
+                <div class="alert-box important">
+                    <div class="alert-icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="alert-content">
+                        <h3>Important Information</h3>
+                        <p>To commission any YCH, you need to contact me first to check availability and discuss details. All YCH commissions follow the same terms as regular commissions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== YCH CATEGORIES ====== -->
+${sections}
+            <!-- CTA Section -->
+            <section class="cta-section arttypes-cta">
+                <div class="cta-content">
+                    <h2><i class="fas fa-star"></i> Want a Custom YCH?</h2>
+                    <p>If you have a specific idea for a YCH that isn't listed here, contact me for a custom YCH commission!</p>
+                    <div class="cta-buttons">
+                        <a href="order.html" class="cta-btn primary"><i class="fas fa-envelope"></i> Request Custom YCH</a>
+                        <a href="pricing.html" class="cta-btn secondary"><i class="fas fa-tags"></i> View Full Pricing</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="portfolio-modal" id="ych-modal">
+            <div class="modal-body">
+                <button class="modal-close">&times;</button>
+                <div class="image-wrapper"><img src="" alt="" class="modal-image"></div>
+                <div class="modal-controls">
+                    <div class="modal-controls-bg">
+                        <button class="modal-zoom-btn zoom-in"><i class="fas fa-search-plus"></i></button>
+                        <input type="range" min="100" max="300" value="100" class="zoom-slider">
+                        <button class="modal-zoom-btn zoom-out"><i class="fas fa-search-minus"></i></button>
+                        <button class="modal-zoom-btn reset-zoom"><i class="fas fa-sync-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+        <footer class="ms-footer minimalist-footer">
+            <div class="footer-wrapper">
+                <div class="footer-top">
+                    <div class="footer-logo-mini"><img src="/Icons/LOGO.png" alt="Nyale"></div>
+                    <div class="social-row">
+                        <a href="https://x.com/ComNyale" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.furaffinity.net/user/nyale0102/" title="FurAffinity"><i class="fas fa-paw"></i></a>
+                        <a href="https://derpibooru.org/profiles/NhalePOny" title="Derpibooru"><i class="fas fa-horse-head"></i></a>
+                        <a href="https://t.me/NyaleArts" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.deviantart.com/nyale0102" title="DeviantArt"><i class="fab fa-deviantart"></i></a>
+                        <a href="https://bsky.app/profile/comnhale.bsky.social" title="Bluesky"><i class="fa-solid fa-mobile-button"></i></a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="nav-mini">
+                        <a href="index.html">Home</a><span>•</span>
+                        <a href="portifolio.html">Portfolio</a><span>•</span>
+                        <a href="arttypes.html">Art Types</a><span>•</span>
+                        <a href="pricing.html">Pricing</a><span>•</span>
+                        <a href="YCH.html">YCH'S</a><span>•</span>
+                        <a href="order.html">Order Now -></a>
+                    </div>
+                    <p class="copyright">Website created by me and elements used: "©Font Awesome", "©Google Fonts"</p>
+                    <p class="copyright">© 2025 Nyale</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/Scripts/ych.js"><\/script>
+    <script src="/Scripts/ych-script.js"><\/script>
+    <script src="/Scripts/modal-script.js" defer><\/script>
+    <script src="/Scripts/portfolio-script.js" defer><\/script>
+    <script src="/Scripts/pricing-script.js" defer><\/script>
+</body>
+</html>`;
+
+    const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download='YCH.html';
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+    showToast('YCH.html baixado! Substitua o arquivo na sua pasta ✓','success');
+}
+
+// =====================================================
+// UTILS
+// =====================================================
+function switchTab(id,btn){ document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.getElementById(id).classList.add('active'); if(btn) btn.classList.add('active'); }
+function showToast(msg,type=''){ const t=document.getElementById('toast'); document.getElementById('toast-msg').textContent=msg; t.className=`toast ${type}`; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3500); }
+
+renderCards();
+</script>
+</body>
+</html>

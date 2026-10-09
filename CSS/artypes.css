@@ -1,0 +1,888 @@
+/* ====== PORTFOLIO/ART TYPES EXCLUSIVE STYLES ====== */
+
+/* Hero específico para Art Types */
+.arttypes-hero {
+    margin-bottom: 40px;
+}
+
+.arttypes-hero .hero-icon {
+    color: #0051ff;
+    animation: gentlePulse 3s infinite ease-in-out;
+}
+
+.arttypes-hero h1 {
+    animation: slideInFromLeft 0.8s ease-out 0.2s both;
+    opacity: 0;
+}
+
+.arttypes-hero .hero-sub {
+    animation: slideInFromRight 0.8s ease-out 0.4s both;
+    opacity: 0;
+}
+
+/* ====== ANIMAÇÕES ESPECÍFICAS PARA ART TYPES ====== */
+@keyframes slideInFromLeft {
+    0% { opacity: 0; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromRight {
+    0% { opacity: 0; transform: translateX(30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromBottom {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gentlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* Aplicar animações aos elementos da página */
+.art-type-section .style-block {
+    animation: slideInFromBottom 0.8s ease-out forwards;
+    opacity: 0;
+    animation-fill-mode: both;
+}
+
+/* Delay progressivo para cada bloco */
+.art-type-section .style-block:nth-child(1) { animation-delay: 0.1s; }
+.art-type-section .style-block:nth-child(2) { animation-delay: 0.3s; }
+.art-type-section .style-block:nth-child(3) { animation-delay: 0.5s; }
+.art-type-section .style-block:nth-child(4) { animation-delay: 0.7s; }
+.art-type-section .style-block:nth-child(5) { animation-delay: 0.9s; }
+.art-type-section .style-block:nth-child(6) { animation-delay: 1.1s; }
+
+/* Animação para os cabeçalhos dos estilos */
+.style-header h2 {
+    animation: slideInFromLeft 0.6s ease-out both;
+    opacity: 0;
+}
+
+/* Animação para as descrições */
+.style-description,
+.style-description2,
+.style-description3,
+.style-description4 {
+    animation: slideInFromRight 0.6s ease-out 0.2s both;
+    opacity: 0;
+}
+
+/* ====== BLOCO DE ESTILO — VERSÃO PREMIUM RESPONSIVA ====== */
+.style-block {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 60px;
+    align-items: center;
+    margin: 70px 0;
+    padding: 40px;
+    border-radius: 20px;
+    background: #ffffffd9;
+    box-shadow: 0 4px 26px rgba(0, 0, 0, 0.07);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Container do carrossel */
+.style-block__carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 26px;
+    background: #e5e7eb;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.7),
+                0 0 16px rgba(255, 123, 0, 0.25);
+    transition: transform 0.25s ease;
+}
+
+.style-block__carousel2 {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 26px;
+    background: #e5e7eb;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 0 0 4px rgba(0, 162, 255, 0.7),
+                0 0 16px rgba(0, 132, 255, 0.25);
+    transition: transform 0.25s ease;
+}
+
+.style-block__carousel3 {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 26px;
+    background: #e5e7eb;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 0 0 4px rgba(0, 199, 10, 0.7),
+                0 0 16px rgba(0, 175, 29, 0.25);
+    transition: transform 0.25s ease;
+}
+
+.style-block__carousel4 {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 26px;
+    background: #e5e7eb;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 0 0 4px rgba(204, 0, 255, 0.7),
+                0 0 16px rgba(195, 0, 255, 0.25);
+    transition: transform 0.25s ease;
+}
+
+/* Efeito de animação de passa mouse em cima da imagem do carrossel */
+.style-block__carousel:hover { transform: scale(1.02); }
+.style-block__carousel2:hover { transform: scale(1.02); }
+.style-block__carousel3:hover { transform: scale(1.02); }
+.style-block__carousel4:hover { transform: scale(1.02); }
+
+/* Track do carrossel */
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease;
+}
+
+/* Imagens dentro do carrossel */
+.carousel-track img {
+    width: 100%;
+    object-fit: contain;
+    flex-shrink: 0;
+    padding: 0px;
+    transition: opacity 0.4s ease;
+}
+
+/* Botões do carrossel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-btn:hover {
+    background: #ffffff;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
+
+/* Indicadores do carrossel */
+.carousel-indicators {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    background: #0051ff;
+    box-shadow: 0 0 6px rgba(0,81,255,0.6);
+    transform: scale(1.2);
+}
+
+/* Texto ao lado do carrossel */
+.style-block__text h2 {
+    font-size: 2.8em;
+    font-weight: 800;
+    margin-bottom: 14px;
+    position: relative;
+}
+
+.style-block__text h2::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: #0051ff;
+    border-radius: 4px;
+}
+
+.style-block__text p {
+    margin-top: 18px;
+    font-size: 1.25em;
+    line-height: 1.55;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+body[data-theme="dark"] .style-block__text p,
+body[data-theme="dark"] .style-description,
+body[data-theme="dark"] .style-description2,
+body[data-theme="dark"] .style-description3,
+body[data-theme="dark"] .style-description4,
+body[data-theme="dark"] .feature-item p,
+body[data-theme="dark"] .feature-item2 p,
+body[data-theme="dark"] .feature-item3 p,
+body[data-theme="dark"] .feature-item4 p,
+body[data-theme="dark"] .feature-item h4,
+body[data-theme="dark"] .feature-item2 h4,
+body[data-theme="dark"] .feature-item3 h4,
+body[data-theme="dark"] .feature-item4 h4,
+body[data-theme="dark"] .style-examples h4 {
+    color: #f8fafc !important;
+}
+
+/* ====== COR DOS FUNDOS DAS YCH ====== */
+.ych-style {
+    background: linear-gradient(135deg, rgba(255, 174, 53, 0.13) 0%, rgba(255, 98, 7, 0.068) 100%);
+    border-radius: 20px;
+    padding: 30px;
+    border: 2px solid rgba(255,107,53,0.2);
+}
+
+.ych-style2 {
+    background: linear-gradient(135deg, rgba(53, 157, 255, 0.05) 0%, rgba(7, 114, 255, 0.05) 100%);
+    border-radius: 20px;
+    padding: 30px;
+    border: 2px solid rgba(53, 164, 255, 0.2);
+}
+
+.ych-style3 {
+    background: linear-gradient(135deg, rgba(53, 255, 120, 0.05) 0%, rgba(7, 255, 28, 0.05) 100%);
+    border-radius: 20px;
+    padding: 30px;
+    border: 2px solid rgba(0, 104, 14, 0.2);
+}
+
+.ych-style4 {
+    background: linear-gradient(135deg, rgba(231, 52, 255, 0.05) 0%, rgba(143, 7, 255, 0.11) 100%);
+    border-radius: 20px;
+    padding: 30px;
+    border: 2px solid rgba(153, 0, 255, 0.2);
+}
+
+/* ====== ESTILOS DOS CABEÇALHOS ====== */
+.style-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.style-badge {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.style-badge.popular {
+    background: linear-gradient(135deg, #ff6b35, #ff922b);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+    animation: gentlePulse 2s infinite ease-in-out;
+    position: relative;
+}
+
+.style-badge.popular::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(90deg, 
+        rgba(255,107,53,0.2) 0%,
+        rgba(255,146,43,0.4) 50%,
+        rgba(255,107,53,0.2) 100%);
+    background-size: 200% 100%;
+    border-radius: 20px;
+    z-index: -1;
+    animation: shimmer 3s infinite linear;
+}
+
+/* Cores dos Títulos Principais */
+.ych-style .style-header h2 { color: #ff6b35; }
+.ych-style2 .style-header h2 { color: #357dff; }
+.ych-style3 .style-header h2 { color: #21c500; }
+.ych-style4 .style-header h2 { color: #9900ff; }
+
+/* Linhas decorativas abaixo dos títulos */
+.ych-style .style-header h2::after {
+    background: linear-gradient(90deg, #ff6b35, #ff922b);
+}
+.ych-style2 .style-header h2::after {
+    background: linear-gradient(90deg, #357dff, #53a1ff);
+}
+.ych-style3 .style-header h2::after {
+    background: linear-gradient(90deg, #21c500, #5aff3d);
+}
+.ych-style4 .style-header h2::after {
+    background: linear-gradient(90deg, #9900ff, #b366ff);
+}
+
+/* ====== DESCRIÇÕES ====== */
+.style-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #333;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    border-left: 4px solid #ffa600;
+}
+
+.style-description2 {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #333;
+    padding: 20px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 12px;
+    border-left: 4px solid #0084ff;
+}
+
+.style-description3 {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #333;
+    padding: 20px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 12px;
+    border-left: 4px solid #00d335;
+}
+
+.style-description4 {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #333;
+    padding: 20px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 12px;
+    border-left: 4px solid #9900ff;
+}
+
+/* ====== FEATURES (CAIXINHAS) ====== */
+.style-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.feature-item {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(248, 99, 0, 0.103);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(216, 140, 0, 0.171);
+}
+
+.feature-item2 {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 47, 255, 0.082);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 110, 255, 0.137);
+}
+
+.feature-item3 {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.feature-item4 {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(247, 0, 255, 0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 0, 255, 0.199);
+}
+
+/* Animações de hover nos cubinhos */
+.feature-item:hover { 
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.1);
+}
+.feature-item2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 110, 255, 0.178);
+}
+.feature-item3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 255, 34, 0.171);
+}
+.feature-item4:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(225, 0, 255, 0.144);
+}
+
+/* Cor dos Ícones dentro dos cubinhos */
+.feature-item i { color: #ff5100; }
+.feature-item2 i { color: #0084ff; }
+.feature-item3 i { color: #21c500; }
+.feature-item4 i { color: #e200e2; }
+
+.feature-item i,
+.feature-item2 i,
+.feature-item3 i,
+.feature-item4 i {
+    font-size: 1.5rem;
+    margin-top: 5px;
+}
+
+/* Títulos e textos dentro dos cubinhos */
+.feature-item h4,
+.feature-item2 h4,
+.feature-item3 h4,
+.feature-item4 h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.feature-item p,
+.feature-item2 p,
+.feature-item3 p,
+.feature-item4 p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* ====== EXEMPLOS ====== */
+.style-examples {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid rgba(0,0,0,0.1);
+}
+
+.style-examples h4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px 0;
+    color: #333;
+}
+
+.style-examples h4 i {
+    color: #ffd700;
+}
+
+.example-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.example-tag {
+    background: rgba(0,81,255,0.1);
+    color: #0051ff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.example-tag:hover {
+    background: rgba(0,81,255,0.2);
+    transform: translateY(-2px);
+}
+
+/* ====== CTA ESPECÍFICO PARA ART TYPES ====== */
+/* CTA SECTION - ESTILOS COMPLETOS AQUI */
+.cta-section {
+    background: linear-gradient(135deg, #0051ff 0%, #57d0ff 100%);
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    margin: 50px 0;
+    color: white;
+    box-shadow: 0 10px 40px rgba(0, 81, 255, 0.3);
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin: 0 0 30px 0;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 30px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.cta-btn.primary {
+    background: white;
+    color: #0051ff;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.cta-btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+    background: #f8f9ff;
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    border-color: white;
+}
+
+/* Estilos específicos para o CTA do Art Types */
+.cta-section.arttypes-cta {
+    animation: slideInFromBottom 0.8s ease-out 0.2s both;
+    opacity: 0;
+}
+
+.cta-section.arttypes-cta h2 {
+    animation: gentlePulse 4s infinite ease-in-out;
+}
+
+.cta-section.arttypes-cta .cta-btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section.arttypes-cta .cta-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    transform: rotate(30deg);
+    transition: transform 0.6s;
+}
+
+.cta-section.arttypes-cta .cta-btn:hover::after {
+    transform: rotate(30deg) translateX(100%);
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 1024px) {
+    .style-block {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 30px;
+    }
+    .style-block__carousel {
+        aspect-ratio: 1/1;
+    }
+    .style-block__text h2 {
+        font-size: 2.2em;
+    }
+    .style-block__text p {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .style-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .style-badge {
+        align-self: flex-start;
+    }
+    
+    .style-description,
+    .style-description2,
+    .style-description3,
+    .style-description4 {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    .example-tag {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .style-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-item,
+    .feature-item2,
+    .feature-item3,
+    .feature-item4 {
+        padding: 15px;
+    }
+    
+    .cta-section {
+        padding: 40px 20px;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .style-block {
+        padding: 20px;
+        gap: 30px;
+    }
+    
+    .style-block__carousel,
+    .style-block__carousel2,
+    .style-block__carousel3,
+    .style-block__carousel4 {
+        aspect-ratio: 1/1;
+    }
+    
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+    
+    .style-block__text h2 {
+        font-size: 1.8em;
+    }
+    
+    .style-block__text p {
+        font-size: 1em;
+    }
+    
+    .feature-item,
+    .feature-item2,
+    .feature-item3,
+    .feature-item4 {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .feature-item i,
+    .feature-item2 i,
+    .feature-item3 i,
+    .feature-item4 i {
+        font-size: 1.8rem;
+    }
+}
+
+/* Para usuários que preferem reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================== */
+/* CORREÇÃO DE RESPONSIVIDADE DO CTA – ART TYPES */
+/* =========================== */
+
+/* Garante que o CTA nunca estoure a tela */
+.cta-section {
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Botões CTA mais flexíveis */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Botão base */
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+
+    min-width: 180px;
+    max-width: 260px;
+    min-height: 52px;
+
+    white-space: nowrap;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* =========================== */
+/* MOBILE – CORREÇÃO CRÍTICA */
+/* =========================== */
+
+@media (max-width: 768px) {
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 320px;
+        white-space: normal;       /* PERMITE QUEBRA */
+        word-break: break-word;    /* evita overflow */
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-section {
+        padding: 25px 10px;
+        border-radius: 14px;
+    }
+
+    .cta-content h2 {
+        font-size: 1.4rem;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .cta-content p {
+        font-size: 0.95rem;
+        padding: 0 8px;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 100%;
+        min-width: unset;
+        padding: 12px 15px;
+        font-size: 0.95rem;
+        min-height: 50px;
+        white-space: normal;
+    }
+}
+
+/* Telas MUITO pequenas */
+@media (max-width: 320px) {
+    .cta-btn {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+        min-height: 45px;
+    }
+}
