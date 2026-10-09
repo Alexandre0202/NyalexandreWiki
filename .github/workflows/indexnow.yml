@@ -1,0 +1,58 @@
+
+name: Notify IndexNow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify search engines
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+          import urllib.error
+
+          key = os.environ.get("INDEXNOW_KEY", "").strip()
+          if not key:
+              raise SystemExit("Missing INDEXNOW_KEY repository secret")
+
+          urls = [
+              "https://alexandre0202.github.io/NyalexandreWiki/",
+              "https://alexandre0202.github.io/NyalexandreWiki/portifolio.html",
+              "https://alexandre0202.github.io/NyalexandreWiki/arttypes.html",
+              "https://alexandre0202.github.io/NyalexandreWiki/pricing.html",
+              "https://alexandre0202.github.io/NyalexandreWiki/order.html",
+              "https://alexandre0202.github.io/NyalexandreWiki/YCH.html"
+          ]
+
+          payload = {
+              "host": "alexandre0202.github.io",
+              "key": key,
+              "keyLocation": f"https://alexandre0202.github.io/{key}.txt",
+              "urlList": urls
+          }
+
+          request = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST"
+          )
+
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  print(f"IndexNow response: HTTP {response.status}")
+          except urllib.error.HTTPError as error:
+              print(f"IndexNow error: HTTP {error.code}")
+              print(error.read().decode("utf-8", errors="replace"))
+              raise
+          PY
