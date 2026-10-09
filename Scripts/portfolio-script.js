@@ -109,18 +109,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adiciona funcionalidade ao botão de expandir
     document.querySelectorAll('.card-expand-btn').forEach(button => {
         button.addEventListener('click', function(e) {
+            if (this.closest('.ych-carousel, .ych-carousel2')) return;
+
             e.stopPropagation(); // Evita que o clique propague para a imagem
-            const img = this.closest('.card-image-container').querySelector('img') ||
-                       this.closest('.card-image-container2').querySelector('img');
+            const img = this.closest('.card-image-container, .card-image-container2')?.querySelector('img');
+            if (!img) return;
             const full = img.dataset.full || img.src;
             
             // Chama a função openModal do seu script
             if (typeof window.openModal === 'function') {
                 window.openModal(full, img.alt || '');
             }
-            
-            // Alternativa: dispara um clique na imagem
-            img.click();
         });
     });
     

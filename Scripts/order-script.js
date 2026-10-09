@@ -34,8 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configurar FAQ accordion
     setupFAQ();
     
-    // Configurar funcionalidade do botão "Back to Top"
-    setupBackToTop();
 });
 
 // Função para atualizar e exibir a hora de São Paulo

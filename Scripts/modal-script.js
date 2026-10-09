@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="modal-controls-bg">
                     <button class="modal-zoom-btn" data-action="zoom-out" aria-label="Diminuir zoom" tabindex="0">−</button>
                     <input id="zoomRange" type="range" min="0.5" max="3" step="0.01" value="1" aria-label="Controle de zoom">
+                    <output class="modal-zoom-level" for="zoomRange" aria-live="polite">100%</output>
                     <button class="modal-zoom-btn" data-action="zoom-in" aria-label="Aumentar zoom" tabindex="0">+</button>
+                    <button class="modal-zoom-btn modal-zoom-reset" data-action="zoom-reset" aria-label="Restabelecer zoom" title="Restabelecer zoom" tabindex="0">↺</button>
                 </div>
             </div>
         </div>
@@ -29,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const zoomRange = modal.querySelector('#zoomRange');
     const btnZoomIn = modal.querySelector('[data-action="zoom-in"]');
     const btnZoomOut = modal.querySelector('[data-action="zoom-out"]');
+    const btnZoomReset = modal.querySelector('[data-action="zoom-reset"]');
+    const zoomLevel = modal.querySelector('.modal-zoom-level');
     const imageWrapper = modal.querySelector('.image-wrapper');
 
     let currentZoom = 1;
@@ -81,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Aplicar Zoom (atualizado para interface fixa) ---
     function applyZoom(value) {
         currentZoom = value;
+        zoomLevel.value = `${Math.round(value * 100)}%`;
         modalImg.style.transform = `scale(${value})`;
 
         if (value > 1) {
@@ -118,6 +123,11 @@ document.addEventListener('DOMContentLoaded', function () {
         applyZoom(val);
     });
 
+    btnZoomReset.addEventListener('click', function () {
+        zoomRange.value = 1;
+        applyZoom(1);
+    });
+
     // --- Fechar ---
     closeBtn.addEventListener('click', closeModal);
 
@@ -132,17 +142,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // --- Abrir ao clicar na galeria ---
-    document.querySelectorAll('.portfolio-card img, .card-expand-btn').forEach(element => {
+    document.querySelectorAll('.portfolio-card img').forEach(element => {
         element.addEventListener('click', function (e) {
-            if (this.classList.contains('card-expand-btn')) {
-                e.stopPropagation();
-                const img = this.closest('.card-image-container').querySelector('img');
-                const full = img.dataset.full || img.src;
-                window.openModal(full, img.alt || '');
-            } else {
-                const full = this.dataset.full || this.src;
-                window.openModal(full, this.alt || '');
-            }
+            const full = this.dataset.full || this.src;
+            window.openModal(full, this.alt || '');
         });
     });
 

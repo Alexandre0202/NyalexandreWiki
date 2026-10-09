@@ -23,8 +23,35 @@ document.addEventListener('DOMContentLoaded', function() {
         // Adiciona estilo ao cursor das imagens do carrossel
         addCarouselImageStyles();
         
+        addCarouselExpandButtons();
+
         // Adiciona listener a todas as imagens do carrossel
         attachCarouselListeners();
+    }
+
+    function addCarouselExpandButtons() {
+        document.querySelectorAll('.art-type-section .style-block__carousel, .art-type-section .style-block__carousel2, .art-type-section .style-block__carousel3, .art-type-section .style-block__carousel4').forEach(carousel => {
+            if (carousel.querySelector('.carousel-expand-btn')) return;
+
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'card-expand-btn carousel-expand-btn';
+            button.setAttribute('aria-label', 'View current image full screen');
+            button.title = 'View current image full screen';
+            button.innerHTML = '<i class="fas fa-expand" aria-hidden="true"></i>';
+            button.addEventListener('click', event => {
+                event.stopPropagation();
+
+                const activeIndicator = carousel.querySelector('.carousel-indicators button.active');
+                const imageIndex = activeIndicator ? Number(activeIndicator.dataset.slide) : 0;
+                const image = carousel.querySelectorAll('.carousel-track img')[imageIndex];
+                if (image && typeof window.openModal === 'function') {
+                    window.openModal(image.dataset.full || image.src, image.alt || '');
+                }
+            });
+
+            carousel.appendChild(button);
+        });
     }
     
     // Adiciona estilos visuais para indicar que a imagem é clicável

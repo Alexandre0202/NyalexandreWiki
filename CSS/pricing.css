@@ -72,15 +72,8 @@
 }
 
 body[data-theme="dark"] .info-card,
-body[data-theme="dark"] .info-card p,
-body[data-theme="dark"] .info-card ol,
-body[data-theme="dark"] .info-card ul,
-body[data-theme="dark"] .info-card li,
 body[data-theme="dark"] .pricing-table-container,
 body[data-theme="dark"] .pricing-card,
-body[data-theme="dark"] .card-header,
-body[data-theme="dark"] .card-body,
-body[data-theme="dark"] .examples,
 body[data-theme="dark"] .table-note,
 body[data-theme="dark"] .dont-draw-item,
 body[data-theme="dark"] .extra-note-box,
@@ -97,11 +90,18 @@ body[data-theme="dark"] .pricing-table td,
 body[data-theme="dark"] .pricing-card h3,
 body[data-theme="dark"] .pricing-card .card-subtitle,
 body[data-theme="dark"] .pricing-card .card-body li,
+body[data-theme="dark"] .pricing-card .examples,
 body[data-theme="dark"] .table-note p,
 body[data-theme="dark"] .faq-item,
 body[data-theme="dark"] .dont-draw-item,
 body[data-theme="dark"] .extra-note-box {
     color: #f8fafc !important;
+}
+
+body[data-theme="dark"] .pricing-card .examples {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 body[data-theme="dark"] .payment-icon,
@@ -811,4 +811,3 @@ body[data-theme="dark"] .faq-answer p {
         transform: translateY(0);
     }
 }
-
